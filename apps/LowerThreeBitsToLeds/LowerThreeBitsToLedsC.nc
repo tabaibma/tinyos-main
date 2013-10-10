@@ -16,7 +16,7 @@ implementation {
 
   event void Boot.booted() {
     dbg("LowerThreeBitsToLedsC", "Booted, Timer started. \n");
-    call MilliTimer.startPeriodic(250);
+    call MilliTimer.startPeriodic(0.125);
     }
 
   event void MilliTimer.fired() {

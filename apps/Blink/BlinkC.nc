@@ -59,6 +59,7 @@ implementation
 {
   event void Boot.booted()
   {
+    dbg("BlinkC", "booted \n");
     call Timer0.startPeriodic( 250 );
     call Timer1.startPeriodic( 500 );
     call Timer2.startPeriodic( 1000 );
