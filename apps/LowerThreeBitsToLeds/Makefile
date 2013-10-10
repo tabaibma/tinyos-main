@@ -1,0 +1,2 @@
+COMPONENT=LowerThreeBitsToLedsAppC
+include $(MAKERULES)
