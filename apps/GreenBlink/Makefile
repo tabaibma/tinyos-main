@@ -1,0 +1,2 @@
+COMPONENT=GreenBlinkAppC
+include $(MAKERULES)
