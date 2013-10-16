@@ -18,7 +18,8 @@ def main():
     # I've used the topology provided in http://www.tinyos.net/dist-2.0.0/tinyos-2.0.0/doc/html/tutorial/lesson11.html
     # However, I'm using only two nodes in my simulation (specification says so)
     f = open("topo.txt", "r")
-
+    print "Adding Topology from topo.txt which is as follows:"
+    print " ", "Src", "Dest", "Gain"
     lines = f.readlines()
     for line in lines:
         s = line.split()
