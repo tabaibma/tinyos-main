@@ -7,7 +7,7 @@
 
 module GreenBlinkC @safe()
 {
-  uses interface Timer<TMilli> as MilliTimer;
+  uses interface Timer<TMicro> as MilliTimer;
   uses interface Leds;
   uses interface Boot;
 }
@@ -16,7 +16,7 @@ implementation
   event void Boot.booted()
   {
     dbg("GreenBlinkC", "GreenLed is booted \n");
-    call MilliTimer.startPeriodic(0.125);
+    call MilliTimer.startPeriodic(125);
   }
 
   event void MilliTimer.fired()

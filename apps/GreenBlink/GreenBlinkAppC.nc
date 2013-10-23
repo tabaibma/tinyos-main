@@ -8,7 +8,7 @@ configuration GreenBlinkAppC
 implementation
 {
   components MainC, GreenBlinkC, LedsC;
-  components new TimerMilliC() as Timer;
+  components new TimerMicroC() as Timer;
   
   GreenBlinkC -> MainC.Boot;
   

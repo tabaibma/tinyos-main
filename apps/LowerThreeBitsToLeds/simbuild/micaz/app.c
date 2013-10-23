@@ -795,7 +795,7 @@ extern void *malloc(size_t __size) __attribute((__leaf__)) __attribute((__nothro
 #line 482
 extern void free(void *__ptr) __attribute((__leaf__)) __attribute((__nothrow__)) ;
 #line 741
-typedef int (*__compar_fn_t)(const void *arg_0x2ad1301c3cf8, const void *arg_0x2ad1301ce020);
+typedef int (*__compar_fn_t)(const void *arg_0x2b8ec0d4ecf8, const void *arg_0x2b8ec0d59020);
 #line 775
 __extension__ 
 #line 792
@@ -1178,8 +1178,8 @@ typedef struct hashtable hashtable_t;
 #line 78
 struct hashtable *
 create_hashtable(unsigned int minsize, 
-unsigned int (*hashfunction)(void *arg_0x2ad1304958e8), 
-int (*key_eq_fn)(void *arg_0x2ad1304930c8, void *arg_0x2ad130493368));
+unsigned int (*hashfunction)(void *arg_0x2b8ec10208e8), 
+int (*key_eq_fn)(void *arg_0x2b8ec101e0c8, void *arg_0x2b8ec101e368));
 #line 103
 #line 102
 int 
@@ -1792,7 +1792,7 @@ struct tm;
 
 struct tm;
 # 46 "/home/ubuntu1310/tinyos-main/tos/lib/tossim/randomlib.h"
-static inline void RandomInitialise(int arg_0x2ad1306a4610, int arg_0x2ad1306a4878);
+static inline void RandomInitialise(int arg_0x2b8ec122f610, int arg_0x2b8ec122f878);
 static inline double RandomUniform(void );
 # 51 "/home/ubuntu1310/tinyos-main/tos/lib/tossim/sim_noise.c"
 int numCase1 = 0;
@@ -3634,11 +3634,11 @@ static error_t MeasureClockC$Init$init(void );
 # 67 "/home/ubuntu1310/tinyos-main/tos/interfaces/TaskBasic.nc"
 static error_t SimSchedulerBasicP$TaskBasic$postTask(
 # 49 "/home/ubuntu1310/tinyos-main/tos/lib/tossim/SimSchedulerBasicP.nc"
-uint8_t arg_0x2ad1307a5108);
+uint8_t arg_0x2b8ec1330108);
 # 75 "/home/ubuntu1310/tinyos-main/tos/interfaces/TaskBasic.nc"
 static void SimSchedulerBasicP$TaskBasic$default$runTask(
 # 49 "/home/ubuntu1310/tinyos-main/tos/lib/tossim/SimSchedulerBasicP.nc"
-uint8_t arg_0x2ad1307a5108);
+uint8_t arg_0x2b8ec1330108);
 # 57 "/home/ubuntu1310/tinyos-main/tos/interfaces/Scheduler.nc"
 static void SimSchedulerBasicP$Scheduler$init(void );
 
@@ -3668,7 +3668,7 @@ static long long int SimMoteP$SimMote$getStartTime(void );
 # 110 "/home/ubuntu1310/tinyos-main/tos/interfaces/AMSend.nc"
 static void TossimActiveMessageC$AMSend$default$sendDone(
 # 47 "/home/ubuntu1310/tinyos-main/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0x2ad130a9a220, 
+am_id_t arg_0x2b8ec1625220, 
 # 103 "/home/ubuntu1310/tinyos-main/tos/interfaces/AMSend.nc"
 message_t * msg, 
 
@@ -3687,7 +3687,7 @@ message_t *
 
 TossimActiveMessageC$Snoop$default$receive(
 # 49 "/home/ubuntu1310/tinyos-main/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0x2ad130a98020, 
+am_id_t arg_0x2b8ec1623020, 
 # 71 "/home/ubuntu1310/tinyos-main/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -3726,7 +3726,7 @@ message_t *
 
 TossimActiveMessageC$Receive$default$receive(
 # 48 "/home/ubuntu1310/tinyos-main/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0x2ad130a99340, 
+am_id_t arg_0x2b8ec1624340, 
 # 71 "/home/ubuntu1310/tinyos-main/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -3874,11 +3874,11 @@ static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$TimerFrom$fire
 #line 83
 static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$default$fired(
 # 48 "/home/ubuntu1310/tinyos-main/tos/lib/timer/VirtualizeTimerC.nc"
-uint8_t arg_0x2ad130edec28);
+uint8_t arg_0x2b8ec1a69c28);
 # 64 "/home/ubuntu1310/tinyos-main/tos/lib/timer/Timer.nc"
 static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$startPeriodic(
 # 48 "/home/ubuntu1310/tinyos-main/tos/lib/timer/VirtualizeTimerC.nc"
-uint8_t arg_0x2ad130edec28, 
+uint8_t arg_0x2b8ec1a69c28, 
 # 64 "/home/ubuntu1310/tinyos-main/tos/lib/timer/Timer.nc"
 uint32_t dt);
 # 82 "/home/ubuntu1310/tinyos-main/tos/lib/timer/Counter.nc"
@@ -3960,7 +3960,7 @@ int sim_main_start_mote(void )   ;
 # 75 "/home/ubuntu1310/tinyos-main/tos/interfaces/TaskBasic.nc"
 static void SimSchedulerBasicP$TaskBasic$runTask(
 # 49 "/home/ubuntu1310/tinyos-main/tos/lib/tossim/SimSchedulerBasicP.nc"
-uint8_t arg_0x2ad1307a5108);
+uint8_t arg_0x2b8ec1330108);
 
 
 
@@ -4128,7 +4128,7 @@ static am_addr_t TossimActiveMessageC$amAddress(void );
 # 110 "/home/ubuntu1310/tinyos-main/tos/interfaces/AMSend.nc"
 static void TossimActiveMessageC$AMSend$sendDone(
 # 47 "/home/ubuntu1310/tinyos-main/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0x2ad130a9a220, 
+am_id_t arg_0x2b8ec1625220, 
 # 103 "/home/ubuntu1310/tinyos-main/tos/interfaces/AMSend.nc"
 message_t * msg, 
 
@@ -4147,7 +4147,7 @@ message_t *
 
 TossimActiveMessageC$Snoop$receive(
 # 49 "/home/ubuntu1310/tinyos-main/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0x2ad130a98020, 
+am_id_t arg_0x2b8ec1623020, 
 # 71 "/home/ubuntu1310/tinyos-main/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -4166,7 +4166,7 @@ message_t *
 
 TossimActiveMessageC$Receive$receive(
 # 48 "/home/ubuntu1310/tinyos-main/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0x2ad130a99340, 
+am_id_t arg_0x2b8ec1624340, 
 # 71 "/home/ubuntu1310/tinyos-main/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -4758,7 +4758,7 @@ static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$TimerFrom$stop
 
 static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$fired(
 # 48 "/home/ubuntu1310/tinyos-main/tos/lib/timer/VirtualizeTimerC.nc"
-uint8_t arg_0x2ad130edec28);
+uint8_t arg_0x2b8ec1a69c28);
 #line 71
 enum /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$__nesc_unnamed4332 {
 #line 71
@@ -5204,13 +5204,13 @@ static inline message_t *TossimActiveMessageC$Snoop$default$receive(am_id_t id, 
 }
 
 # 78 "/home/ubuntu1310/tinyos-main/tos/interfaces/Receive.nc"
-inline static message_t * TossimActiveMessageC$Snoop$receive(am_id_t arg_0x2ad130a98020, message_t * msg, void * payload, uint8_t len){
+inline static message_t * TossimActiveMessageC$Snoop$receive(am_id_t arg_0x2b8ec1623020, message_t * msg, void * payload, uint8_t len){
 #line 78
   nx_struct message_t *__nesc_result;
 #line 78
 
 #line 78
-    __nesc_result = TossimActiveMessageC$Snoop$default$receive(arg_0x2ad130a98020, msg, payload, len);
+    __nesc_result = TossimActiveMessageC$Snoop$default$receive(arg_0x2b8ec1623020, msg, payload, len);
 #line 78
 
 #line 78
@@ -5226,13 +5226,13 @@ static inline message_t *TossimActiveMessageC$Receive$default$receive(am_id_t id
 }
 
 # 78 "/home/ubuntu1310/tinyos-main/tos/interfaces/Receive.nc"
-inline static message_t * TossimActiveMessageC$Receive$receive(am_id_t arg_0x2ad130a99340, message_t * msg, void * payload, uint8_t len){
+inline static message_t * TossimActiveMessageC$Receive$receive(am_id_t arg_0x2b8ec1624340, message_t * msg, void * payload, uint8_t len){
 #line 78
   nx_struct message_t *__nesc_result;
 #line 78
 
 #line 78
-    __nesc_result = TossimActiveMessageC$Receive$default$receive(arg_0x2ad130a99340, msg, payload, len);
+    __nesc_result = TossimActiveMessageC$Receive$default$receive(arg_0x2b8ec1624340, msg, payload, len);
 #line 78
 
 #line 78
@@ -5573,9 +5573,9 @@ static inline void TossimActiveMessageC$AMSend$default$sendDone(uint8_t id, mess
 }
 
 # 110 "/home/ubuntu1310/tinyos-main/tos/interfaces/AMSend.nc"
-inline static void TossimActiveMessageC$AMSend$sendDone(am_id_t arg_0x2ad130a9a220, message_t * msg, error_t error){
+inline static void TossimActiveMessageC$AMSend$sendDone(am_id_t arg_0x2b8ec1625220, message_t * msg, error_t error){
 #line 110
-    TossimActiveMessageC$AMSend$default$sendDone(arg_0x2ad130a9a220, msg, error);
+    TossimActiveMessageC$AMSend$default$sendDone(arg_0x2b8ec1625220, msg, error);
 #line 110
 }
 #line 110
@@ -5837,9 +5837,9 @@ static inline void SimSchedulerBasicP$TaskBasic$default$runTask(uint8_t id)
 }
 
 # 75 "/home/ubuntu1310/tinyos-main/tos/interfaces/TaskBasic.nc"
-inline static void SimSchedulerBasicP$TaskBasic$runTask(uint8_t arg_0x2ad1307a5108){
+inline static void SimSchedulerBasicP$TaskBasic$runTask(uint8_t arg_0x2b8ec1330108){
 #line 75
-  switch (arg_0x2ad1307a5108) {
+  switch (arg_0x2b8ec1330108) {
 #line 75
     case TossimPacketModelC$startDoneTask:
 #line 75
@@ -5873,7 +5873,7 @@ inline static void SimSchedulerBasicP$TaskBasic$runTask(uint8_t arg_0x2ad1307a51
 #line 75
     default:
 #line 75
-      SimSchedulerBasicP$TaskBasic$default$runTask(arg_0x2ad1307a5108);
+      SimSchedulerBasicP$TaskBasic$default$runTask(arg_0x2b8ec1330108);
 #line 75
       break;
 #line 75
@@ -6212,9 +6212,9 @@ static inline void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$d
 }
 
 # 83 "/home/ubuntu1310/tinyos-main/tos/lib/timer/Timer.nc"
-inline static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$fired(uint8_t arg_0x2ad130edec28){
+inline static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$fired(uint8_t arg_0x2b8ec1a69c28){
 #line 83
-  switch (arg_0x2ad130edec28) {
+  switch (arg_0x2b8ec1a69c28) {
 #line 83
     case 0U:
 #line 83
@@ -6224,7 +6224,7 @@ inline static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$f
 #line 83
     default:
 #line 83
-      /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$default$fired(arg_0x2ad130edec28);
+      /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$default$fired(arg_0x2b8ec1a69c28);
 #line 83
       break;
 #line 83
