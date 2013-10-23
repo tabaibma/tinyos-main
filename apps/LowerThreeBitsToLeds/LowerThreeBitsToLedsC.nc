@@ -20,9 +20,8 @@ implementation {
     }
 
   event void MilliTimer.fired() {
-    dbg("LowerThreeBitsToLedsC", "Current Counter is %d \n", counter);
-
     counter++;
+    dbg("LowerThreeBitsToLedsC", "Current Counter is %d \n", counter);    
     if (counter & 0x1) {
        call Leds.led0On();
     }
