@@ -789,7 +789,7 @@ extern void *malloc(size_t __size) __attribute((__leaf__)) __attribute((__nothro
 #line 488
 extern void free(void *__ptr) __attribute((__leaf__)) __attribute((__nothrow__)) ;
 #line 742
-typedef int (*__compar_fn_t)(const void *arg_0x2b59fc41d1f0, const void *arg_0x2b59fc41d4c8);
+typedef int (*__compar_fn_t)(const void *arg_0x2b36028511f0, const void *arg_0x2b36028514c8);
 #line 776
 __extension__ 
 #line 793
@@ -807,7 +807,7 @@ extern double sqrt(double __x) __attribute((__leaf__)) __attribute((__nothrow__)
 #line 186
 extern double floor(double __x) __attribute((__leaf__)) __attribute((__nothrow__)) __attribute((const)) ;
 #line 252
-extern double erfc(double arg_0x2b59fc49f9c8) __attribute((__leaf__)) __attribute((__nothrow__)) ;
+extern double erfc(double arg_0x2b36028d39c8) __attribute((__leaf__)) __attribute((__nothrow__)) ;
 # 203 "/usr/include/math.h" 3
 enum __nesc_unnamed4263 {
 
@@ -1134,7 +1134,7 @@ struct sim_event {
   void (*cleanup)(sim_event_t *e);
 };
 
-static sim_event_t *sim_queue_allocate_event();
+
 
 void sim_queue_init();
 void sim_queue_insert(sim_event_t *event);
@@ -1182,8 +1182,8 @@ typedef struct hashtable hashtable_t;
 #line 78
 struct hashtable *
 create_hashtable(unsigned int minsize, 
-unsigned int (*hashfunction)(void *arg_0x2b59fc6ed868), 
-int (*key_eq_fn)(void *arg_0x2b59fc6ec020, void *arg_0x2b59fc6ec2c0));
+unsigned int (*hashfunction)(void *arg_0x2b3602b21868), 
+int (*key_eq_fn)(void *arg_0x2b3602b20020, void *arg_0x2b3602b202c0));
 #line 103
 #line 102
 int 
@@ -1219,7 +1219,7 @@ typedef struct sim_log_channel {
 } sim_log_channel_t;
 
 enum __nesc_unnamed4272 {
-  SIM_LOG_OUTPUT_COUNT = 187U
+  SIM_LOG_OUTPUT_COUNT = 160U
 };
 
 sim_log_output_t outputs[SIM_LOG_OUTPUT_COUNT];
@@ -1377,13 +1377,6 @@ void sim_queue_cleanup_data(sim_event_t *event)   ;
 
 
 void sim_queue_cleanup_total(sim_event_t *event)   ;
-
-
-
-
-
-
-static sim_event_t *sim_queue_allocate_event();
 # 57 "/usr/include/x86_64-linux-gnu/sys/time.h" 3
 struct timezone {
 
@@ -1796,7 +1789,7 @@ struct tm;
 
 struct tm;
 # 46 "/home/ubuntu1204/tinyos-main/tos/lib/tossim/randomlib.h"
-static inline void RandomInitialise(int arg_0x2b59fc8dc288, int arg_0x2b59fc8dc4f0);
+static inline void RandomInitialise(int arg_0x2b3602d10288, int arg_0x2b3602d104f0);
 static double RandomUniform(void );
 # 51 "/home/ubuntu1204/tinyos-main/tos/lib/tossim/sim_noise.c"
 int numCase1 = 0;
@@ -3316,302 +3309,9 @@ enum __nesc_unnamed4299 {
 };
 # 41 "/home/ubuntu1204/tinyos-main/tos/lib/tossim/SimMainP.nc"
 static void __nesc_nido_initialise(int node);
-# 52 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/Atm128Timer.h"
-enum __nesc_unnamed4300 {
-  ATM128_CLK8_OFF = 0x0, 
-  ATM128_CLK8_NORMAL = 0x1, 
-  ATM128_CLK8_DIVIDE_8 = 0x2, 
-  ATM128_CLK8_DIVIDE_32 = 0x3, 
-  ATM128_CLK8_DIVIDE_64 = 0x4, 
-  ATM128_CLK8_DIVIDE_128 = 0x5, 
-  ATM128_CLK8_DIVIDE_256 = 0x6, 
-  ATM128_CLK8_DIVIDE_1024 = 0x7
-};
-
-enum __nesc_unnamed4301 {
-  ATM128_CLK16_OFF = 0x0, 
-  ATM128_CLK16_NORMAL = 0x1, 
-  ATM128_CLK16_DIVIDE_8 = 0x2, 
-  ATM128_CLK16_DIVIDE_64 = 0x3, 
-  ATM128_CLK16_DIVIDE_256 = 0x4, 
-  ATM128_CLK16_DIVIDE_1024 = 0x5, 
-  ATM128_CLK16_EXTERNAL_FALL = 0x6, 
-  ATM128_CLK16_EXTERNAL_RISE = 0x7
-};
-
-
-enum __nesc_unnamed4302 {
-  AVR_CLOCK_OFF = 0, 
-  AVR_CLOCK_ON = 1, 
-  AVR_CLOCK_DIVIDE_8 = 2
-};
-
-
-enum __nesc_unnamed4303 {
-  ATM128_WAVE8_NORMAL = 0, 
-  ATM128_WAVE8_PWM, 
-  ATM128_WAVE8_CTC, 
-  ATM128_WAVE8_PWM_FAST
-};
-
-
-enum __nesc_unnamed4304 {
-  ATM128_COMPARE_OFF = 0, 
-  ATM128_COMPARE_TOGGLE, 
-  ATM128_COMPARE_CLEAR, 
-  ATM128_COMPARE_SET
-};
-#line 108
-#line 98
-typedef union __nesc_unnamed4305 {
-
-  uint8_t flat;
-  struct __nesc_unnamed4306 {
-    uint8_t cs : 3;
-    uint8_t wgm1 : 1;
-    uint8_t com : 2;
-    uint8_t wgm0 : 1;
-    uint8_t foc : 1;
-  } bits;
-} Atm128TimerControl_t;
-
-typedef Atm128TimerControl_t Atm128_TCCR0_t;
-typedef uint8_t Atm128_TCNT0_t;
-typedef uint8_t Atm128_OCR0_t;
-
-typedef Atm128TimerControl_t Atm128_TCCR2_t;
-typedef uint8_t Atm128_TCNT2_t;
-typedef uint8_t Atm128_OCR2_t;
-#line 130
-#line 120
-typedef union __nesc_unnamed4307 {
-
-  uint8_t flat;
-  struct __nesc_unnamed4308 {
-    uint8_t tcr0ub : 1;
-    uint8_t ocr0ub : 1;
-    uint8_t tcn0ub : 1;
-    uint8_t as0 : 1;
-    uint8_t rsvd : 4;
-  } bits;
-} Atm128Assr_t;
-#line 146
-#line 133
-typedef union __nesc_unnamed4309 {
-
-  uint8_t flat;
-  struct __nesc_unnamed4310 {
-    uint8_t toie0 : 1;
-    uint8_t ocie0 : 1;
-    uint8_t toie1 : 1;
-    uint8_t ocie1b : 1;
-    uint8_t ocie1a : 1;
-    uint8_t ticie1 : 1;
-    uint8_t toie2 : 1;
-    uint8_t ocie2 : 1;
-  } bits;
-} Atm128_TIMSK_t;
-#line 163
-#line 150
-typedef union __nesc_unnamed4311 {
-
-  uint8_t flat;
-  struct __nesc_unnamed4312 {
-    uint8_t tov0 : 1;
-    uint8_t ocf0 : 1;
-    uint8_t tov1 : 1;
-    uint8_t ocf1b : 1;
-    uint8_t ocf1a : 1;
-    uint8_t icf1 : 1;
-    uint8_t tov2 : 1;
-    uint8_t ocf2 : 1;
-  } bits;
-} Atm128_TIFR_t;
-#line 178
-#line 167
-typedef union __nesc_unnamed4313 {
-
-  uint8_t flat;
-  struct __nesc_unnamed4314 {
-    uint8_t psr321 : 1;
-    uint8_t psr0 : 1;
-    uint8_t pud : 1;
-    uint8_t acme : 1;
-    uint8_t rsvd : 3;
-    uint8_t tsm : 1;
-  } bits;
-} Atm128_SFIOR_t;
-
-
-
-
-
-
-enum __nesc_unnamed4315 {
-  ATM128_TIMER_COMPARE_NORMAL = 0, 
-  ATM128_TIMER_COMPARE_TOGGLE, 
-  ATM128_TIMER_COMPARE_CLEAR, 
-  ATM128_TIMER_COMPARE_SET
-};
-#line 202
-#line 193
-typedef union __nesc_unnamed4316 {
-
-  uint8_t flat;
-  struct __nesc_unnamed4317 {
-    uint8_t wgm10 : 2;
-    uint8_t comC : 2;
-    uint8_t comB : 2;
-    uint8_t comA : 2;
-  } bits;
-} Atm128TimerCtrlCompare_t;
-
-
-typedef Atm128TimerCtrlCompare_t Atm128_TCCR1A_t;
-
-
-typedef Atm128TimerCtrlCompare_t Atm128_TCCR3A_t;
-
-
-enum __nesc_unnamed4318 {
-  ATM128_WAVE16_NORMAL = 0, 
-  ATM128_WAVE16_PWM_8BIT, 
-  ATM128_WAVE16_PWM_9BIT, 
-  ATM128_WAVE16_PWM_10BIT, 
-  ATM128_WAVE16_CTC_COMPARE, 
-  ATM128_WAVE16_PWM_FAST_8BIT, 
-  ATM128_WAVE16_PWM_FAST_9BIT, 
-  ATM128_WAVE16_PWM_FAST_10BIT, 
-  ATM128_WAVE16_PWM_CAPTURE_LOW, 
-  ATM128_WAVE16_PWM_COMPARE_LOW, 
-  ATM128_WAVE16_PWM_CAPTURE_HIGH, 
-  ATM128_WAVE16_PWM_COMPARE_HIGH, 
-  ATM128_WAVE16_CTC_CAPTURE, 
-  ATM128_WAVE16_RESERVED, 
-  ATM128_WAVE16_PWM_FAST_CAPTURE, 
-  ATM128_WAVE16_PWM_FAST_COMPARE
-};
-#line 241
-#line 231
-typedef union __nesc_unnamed4319 {
-
-  uint8_t flat;
-  struct __nesc_unnamed4320 {
-    uint8_t cs : 3;
-    uint8_t wgm32 : 2;
-    uint8_t rsvd : 1;
-    uint8_t ices1 : 1;
-    uint8_t icnc1 : 1;
-  } bits;
-} Atm128TimerCtrlCapture_t;
-
-
-typedef Atm128TimerCtrlCapture_t Atm128_TCCR1B_t;
-
-
-typedef Atm128TimerCtrlCapture_t Atm128_TCCR3B_t;
-#line 259
-#line 250
-typedef union __nesc_unnamed4321 {
-
-  uint8_t flat;
-  struct __nesc_unnamed4322 {
-    uint8_t rsvd : 5;
-    uint8_t focC : 1;
-    uint8_t focB : 1;
-    uint8_t focA : 1;
-  } bits;
-} Atm128TimerCtrlClock_t;
-
-
-typedef Atm128TimerCtrlClock_t Atm128_TCCR1C_t;
-
-
-typedef Atm128TimerCtrlClock_t Atm128_TCCR3C_t;
-
-
-
-typedef uint8_t Atm128_TCNT1H_t;
-typedef uint8_t Atm128_TCNT1L_t;
-typedef uint8_t Atm128_TCNT3H_t;
-typedef uint8_t Atm128_TCNT3L_t;
-
-
-typedef uint8_t Atm128_OCR1AH_t;
-typedef uint8_t Atm128_OCR1AL_t;
-typedef uint8_t Atm128_OCR1BH_t;
-typedef uint8_t Atm128_OCR1BL_t;
-typedef uint8_t Atm128_OCR1CH_t;
-typedef uint8_t Atm128_OCR1CL_t;
-
-
-typedef uint8_t Atm128_OCR3AH_t;
-typedef uint8_t Atm128_OCR3AL_t;
-typedef uint8_t Atm128_OCR3BH_t;
-typedef uint8_t Atm128_OCR3BL_t;
-typedef uint8_t Atm128_OCR3CH_t;
-typedef uint8_t Atm128_OCR3CL_t;
-
-
-typedef uint8_t Atm128_ICR1H_t;
-typedef uint8_t Atm128_ICR1L_t;
-typedef uint8_t Atm128_ICR3H_t;
-typedef uint8_t Atm128_ICR3L_t;
-#line 309
-#line 297
-typedef union __nesc_unnamed4323 {
-
-  uint8_t flat;
-  struct __nesc_unnamed4324 {
-    uint8_t ocie1c : 1;
-    uint8_t ocie3c : 1;
-    uint8_t toie3 : 1;
-    uint8_t ocie3b : 1;
-    uint8_t ocie3a : 1;
-    uint8_t ticie3 : 1;
-    uint8_t rsvd : 2;
-  } bits;
-} Atm128_ETIMSK_t;
-#line 324
-#line 312
-typedef union __nesc_unnamed4325 {
-
-  uint8_t flat;
-  struct __nesc_unnamed4326 {
-    uint8_t ocf1c : 1;
-    uint8_t ocf3c : 1;
-    uint8_t tov3 : 1;
-    uint8_t ocf3b : 1;
-    uint8_t ocf3a : 1;
-    uint8_t icf3 : 1;
-    uint8_t rsvd : 2;
-  } bits;
-} Atm128_ETIFR_t;
-typedef TMilli FloodingBasedTreeC$MilliTimer$precision_tag;
-enum AMQueueP$__nesc_unnamed4327 {
+enum AMQueueP$__nesc_unnamed4300 {
   AMQueueP$NUM_CLIENTS = 1U
 };
-typedef TMilli /*AlarmCounterMilliP.Atm128AlarmAsyncC*/Atm128AlarmAsyncC$0$precision;
-typedef /*AlarmCounterMilliP.Atm128AlarmAsyncC*/Atm128AlarmAsyncC$0$precision /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$precision;
-typedef /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$precision /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Alarm$precision_tag;
-typedef uint32_t /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Alarm$size_type;
-typedef /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$precision /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Counter$precision_tag;
-typedef uint32_t /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Counter$size_type;
-typedef uint8_t /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Compare$size_type;
-typedef uint8_t /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Timer$timer_size;
-typedef uint8_t HplAtm128Timer0AsyncP$Timer0$timer_size;
-typedef uint8_t HplAtm128Timer0AsyncP$Compare$size_type;
-typedef TMilli /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$precision_tag;
-typedef /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$precision_tag /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Alarm$precision_tag;
-typedef uint32_t /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Alarm$size_type;
-typedef /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$precision_tag /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Timer$precision_tag;
-typedef TMilli /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$precision_tag;
-typedef /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$precision_tag /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$TimerFrom$precision_tag;
-typedef /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$precision_tag /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$precision_tag;
-typedef TMilli /*HilTimerMilliC.CounterToLocalTimeC*/CounterToLocalTimeC$0$precision_tag;
-typedef /*HilTimerMilliC.CounterToLocalTimeC*/CounterToLocalTimeC$0$precision_tag /*HilTimerMilliC.CounterToLocalTimeC*/CounterToLocalTimeC$0$LocalTime$precision_tag;
-typedef /*HilTimerMilliC.CounterToLocalTimeC*/CounterToLocalTimeC$0$precision_tag /*HilTimerMilliC.CounterToLocalTimeC*/CounterToLocalTimeC$0$Counter$precision_tag;
-typedef uint32_t /*HilTimerMilliC.CounterToLocalTimeC*/CounterToLocalTimeC$0$Counter$size_type;
 typedef uint16_t RandomMlcgC$SeedInit$parameter;
 # 62 "/home/ubuntu1204/tinyos-main/tos/interfaces/Init.nc"
 static error_t PlatformP$Init$init(void );
@@ -3628,11 +3328,11 @@ static error_t MeasureClockC$Init$init(void );
 # 67 "/home/ubuntu1204/tinyos-main/tos/interfaces/TaskBasic.nc"
 static error_t SimSchedulerBasicP$TaskBasic$postTask(
 # 49 "/home/ubuntu1204/tinyos-main/tos/lib/tossim/SimSchedulerBasicP.nc"
-uint8_t arg_0x2b59fc9fdab0);
+uint8_t arg_0x2b3602e31ab0);
 # 75 "/home/ubuntu1204/tinyos-main/tos/interfaces/TaskBasic.nc"
 static void SimSchedulerBasicP$TaskBasic$default$runTask(
 # 49 "/home/ubuntu1204/tinyos-main/tos/lib/tossim/SimSchedulerBasicP.nc"
-uint8_t arg_0x2b59fc9fdab0);
+uint8_t arg_0x2b3602e31ab0);
 # 57 "/home/ubuntu1204/tinyos-main/tos/interfaces/Scheduler.nc"
 static void SimSchedulerBasicP$Scheduler$init(void );
 
@@ -3662,7 +3362,7 @@ static long long int SimMoteP$SimMote$getStartTime(void );
 # 80 "/home/ubuntu1204/tinyos-main/tos/interfaces/AMSend.nc"
 static error_t TossimActiveMessageC$AMSend$send(
 # 47 "/home/ubuntu1204/tinyos-main/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0x2b59fccea220, 
+am_id_t arg_0x2b360311e220, 
 # 80 "/home/ubuntu1204/tinyos-main/tos/interfaces/AMSend.nc"
 am_addr_t addr, 
 #line 71
@@ -3685,7 +3385,7 @@ message_t *
 
 TossimActiveMessageC$Snoop$default$receive(
 # 49 "/home/ubuntu1204/tinyos-main/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0x2b59fcce8020, 
+am_id_t arg_0x2b360311c020, 
 # 71 "/home/ubuntu1204/tinyos-main/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -3732,7 +3432,7 @@ message_t *
 
 TossimActiveMessageC$Receive$default$receive(
 # 48 "/home/ubuntu1204/tinyos-main/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0x2b59fcce9340, 
+am_id_t arg_0x2b360311d340, 
 # 71 "/home/ubuntu1204/tinyos-main/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -3862,8 +3562,6 @@ void * payload,
 
 
 uint8_t len);
-# 83 "/home/ubuntu1204/tinyos-main/tos/lib/timer/Timer.nc"
-static void FloodingBasedTreeC$MilliTimer$fired(void );
 # 80 "/home/ubuntu1204/tinyos-main/tos/interfaces/AMSend.nc"
 static error_t /*FloodingBasedTreeAppC.AMSenderC.SenderC.AMQueueEntryP*/AMQueueEntryP$0$AMSend$send(am_addr_t addr, 
 #line 71
@@ -3888,7 +3586,7 @@ error_t error);
 # 110 "/home/ubuntu1204/tinyos-main/tos/interfaces/AMSend.nc"
 static void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$sendDone(
 # 48 "/home/ubuntu1204/tinyos-main/tos/system/AMQueueImplP.nc"
-am_id_t arg_0x2b59fcf18c70, 
+am_id_t arg_0x2b360335cc70, 
 # 103 "/home/ubuntu1204/tinyos-main/tos/interfaces/AMSend.nc"
 message_t * msg, 
 
@@ -3901,7 +3599,7 @@ error_t error);
 # 75 "/home/ubuntu1204/tinyos-main/tos/interfaces/Send.nc"
 static error_t /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$send(
 # 46 "/home/ubuntu1204/tinyos-main/tos/system/AMQueueImplP.nc"
-uint8_t arg_0x2b59fcf19990, 
+uint8_t arg_0x2b360335d990, 
 # 67 "/home/ubuntu1204/tinyos-main/tos/interfaces/Send.nc"
 message_t * msg, 
 
@@ -3915,7 +3613,7 @@ uint8_t len);
 #line 100
 static void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$default$sendDone(
 # 46 "/home/ubuntu1204/tinyos-main/tos/system/AMQueueImplP.nc"
-uint8_t arg_0x2b59fcf19990, 
+uint8_t arg_0x2b360335d990, 
 # 96 "/home/ubuntu1204/tinyos-main/tos/interfaces/Send.nc"
 message_t * msg, 
 
@@ -3926,81 +3624,6 @@ error_t error);
 static void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$errorTask$runTask(void );
 #line 75
 static void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$CancelTask$runTask(void );
-# 109 "/home/ubuntu1204/tinyos-main/tos/lib/timer/Alarm.nc"
-static /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Alarm$size_type /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Alarm$getNow(void );
-#line 103
-static void /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Alarm$startAt(/*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Alarm$size_type t0, /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Alarm$size_type dt);
-#line 116
-static /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Alarm$size_type /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Alarm$getAlarm(void );
-#line 73
-static void /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Alarm$stop(void );
-# 62 "/home/ubuntu1204/tinyos-main/tos/interfaces/Init.nc"
-static error_t /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Init$init(void );
-# 64 "/home/ubuntu1204/tinyos-main/tos/lib/timer/Counter.nc"
-static /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Counter$size_type /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Counter$get(void );
-# 58 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/HplAtm128Compare.nc"
-static void /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Compare$fired(void );
-# 70 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/HplAtm128Timer.nc"
-static void /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Timer$overflow(void );
-#line 61
-static HplAtm128Timer0AsyncP$Timer0$timer_size HplAtm128Timer0AsyncP$Timer0$get(void );
-#line 110
-static uint8_t HplAtm128Timer0AsyncP$Timer0$getScale(void );
-#line 67
-static void HplAtm128Timer0AsyncP$Timer0$set(HplAtm128Timer0AsyncP$Timer0$timer_size t);
-# 44 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/HplAtm128TimerAsync.nc"
-static int HplAtm128Timer0AsyncP$TimerAsync$compareBusy(void );
-#line 32
-static void HplAtm128Timer0AsyncP$TimerAsync$setTimer0Asynchronous(void );
-# 53 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/HplAtm128TimerCtrl8.nc"
-static Atm128_TIFR_t HplAtm128Timer0AsyncP$Timer0Ctrl$getInterruptFlag(void );
-#line 46
-static void HplAtm128Timer0AsyncP$Timer0Ctrl$setControl(Atm128TimerControl_t control);
-# 48 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/HplAtm128Compare.nc"
-static HplAtm128Timer0AsyncP$Compare$size_type HplAtm128Timer0AsyncP$Compare$get(void );
-
-
-
-
-
-static void HplAtm128Timer0AsyncP$Compare$set(HplAtm128Timer0AsyncP$Compare$size_type t);
-
-
-
-
-
-
-
-
-
-
-static void HplAtm128Timer0AsyncP$Compare$start(void );
-# 75 "/home/ubuntu1204/tinyos-main/tos/interfaces/TaskBasic.nc"
-static void /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$fired$runTask(void );
-# 78 "/home/ubuntu1204/tinyos-main/tos/lib/timer/Alarm.nc"
-static void /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Alarm$fired(void );
-# 136 "/home/ubuntu1204/tinyos-main/tos/lib/timer/Timer.nc"
-static uint32_t /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Timer$getNow(void );
-#line 129
-static void /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Timer$startOneShotAt(uint32_t t0, uint32_t dt);
-#line 78
-static void /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Timer$stop(void );
-# 75 "/home/ubuntu1204/tinyos-main/tos/interfaces/TaskBasic.nc"
-static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$updateFromTimer$runTask(void );
-# 83 "/home/ubuntu1204/tinyos-main/tos/lib/timer/Timer.nc"
-static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$TimerFrom$fired(void );
-#line 83
-static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$default$fired(
-# 48 "/home/ubuntu1204/tinyos-main/tos/lib/timer/VirtualizeTimerC.nc"
-uint8_t arg_0x2b59fd1c2c28);
-# 73 "/home/ubuntu1204/tinyos-main/tos/lib/timer/Timer.nc"
-static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$startOneShot(
-# 48 "/home/ubuntu1204/tinyos-main/tos/lib/timer/VirtualizeTimerC.nc"
-uint8_t arg_0x2b59fd1c2c28, 
-# 73 "/home/ubuntu1204/tinyos-main/tos/lib/timer/Timer.nc"
-uint32_t dt);
-# 82 "/home/ubuntu1204/tinyos-main/tos/lib/timer/Counter.nc"
-static void /*HilTimerMilliC.CounterToLocalTimeC*/CounterToLocalTimeC$0$Counter$overflow(void );
 # 62 "/home/ubuntu1204/tinyos-main/tos/interfaces/Init.nc"
 static error_t RandomMlcgC$Init$init(void );
 #line 62
@@ -4047,13 +3670,13 @@ int sim_main_start_mote(void )   ;
 # 75 "/home/ubuntu1204/tinyos-main/tos/interfaces/TaskBasic.nc"
 static void SimSchedulerBasicP$TaskBasic$runTask(
 # 49 "/home/ubuntu1204/tinyos-main/tos/lib/tossim/SimSchedulerBasicP.nc"
-uint8_t arg_0x2b59fc9fdab0);
+uint8_t arg_0x2b3602e31ab0);
 
 
 
-enum SimSchedulerBasicP$__nesc_unnamed4328 {
+enum SimSchedulerBasicP$__nesc_unnamed4301 {
 
-  SimSchedulerBasicP$NUM_TASKS = 7U, 
+  SimSchedulerBasicP$NUM_TASKS = 5U, 
   SimSchedulerBasicP$NO_TASK = 255
 };
 
@@ -4215,7 +3838,7 @@ static am_addr_t TossimActiveMessageC$amAddress(void );
 # 110 "/home/ubuntu1204/tinyos-main/tos/interfaces/AMSend.nc"
 static void TossimActiveMessageC$AMSend$sendDone(
 # 47 "/home/ubuntu1204/tinyos-main/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0x2b59fccea220, 
+am_id_t arg_0x2b360311e220, 
 # 103 "/home/ubuntu1204/tinyos-main/tos/interfaces/AMSend.nc"
 message_t * msg, 
 
@@ -4234,7 +3857,7 @@ message_t *
 
 TossimActiveMessageC$Snoop$receive(
 # 49 "/home/ubuntu1204/tinyos-main/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0x2b59fcce8020, 
+am_id_t arg_0x2b360311c020, 
 # 71 "/home/ubuntu1204/tinyos-main/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -4253,7 +3876,7 @@ message_t *
 
 TossimActiveMessageC$Receive$receive(
 # 48 "/home/ubuntu1204/tinyos-main/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0x2b59fcce9340, 
+am_id_t arg_0x2b360311d340, 
 # 71 "/home/ubuntu1204/tinyos-main/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -4388,7 +4011,7 @@ double reverseGain);
 static bool TossimPacketModelC$GainRadioModel$clearChannel(void );
 static void TossimPacketModelC$GainRadioModel$setPendingTransmission(void );
 # 96 "/home/ubuntu1204/tinyos-main/tos/lib/tossim/TossimPacketModelC.nc"
-enum TossimPacketModelC$__nesc_unnamed4329 {
+enum TossimPacketModelC$__nesc_unnamed4302 {
 #line 96
   TossimPacketModelC$startDoneTask = 0U
 };
@@ -4398,14 +4021,14 @@ typedef int TossimPacketModelC$__nesc_sillytask_startDoneTask[TossimPacketModelC
 
 
 
-enum TossimPacketModelC$__nesc_unnamed4330 {
+enum TossimPacketModelC$__nesc_unnamed4303 {
 #line 101
   TossimPacketModelC$stopDoneTask = 1U
 };
 #line 101
 typedef int TossimPacketModelC$__nesc_sillytask_stopDoneTask[TossimPacketModelC$stopDoneTask];
 #line 145
-enum TossimPacketModelC$__nesc_unnamed4331 {
+enum TossimPacketModelC$__nesc_unnamed4304 {
 #line 145
   TossimPacketModelC$sendDoneTask = 2U
 };
@@ -4642,36 +4265,20 @@ message_t * msg,
 
 
 uint8_t len);
-# 73 "/home/ubuntu1204/tinyos-main/tos/lib/timer/Timer.nc"
-static void FloodingBasedTreeC$MilliTimer$startOneShot(uint32_t dt);
-# 19 "FloodingBasedTreeC.nc"
+# 18 "FloodingBasedTreeC.nc"
 uint16_t FloodingBasedTreeC$my_level[1000];
 message_t FloodingBasedTreeC$pkt[1000];
 bool FloodingBasedTreeC$busy[1000];
 
 static void FloodingBasedTreeC$sendMessage(void );
-#line 44
+#line 43
 static inline void FloodingBasedTreeC$Boot$booted(void );
 
 
 
 
 static inline void FloodingBasedTreeC$SplitControl$startDone(error_t err);
-
-
-
-
-
-
-
-
-
-
-static inline void FloodingBasedTreeC$MilliTimer$fired(void );
-
-
-
-
+#line 62
 static inline void FloodingBasedTreeC$SplitControl$stopDone(error_t err);
 
 
@@ -4751,7 +4358,7 @@ static inline void /*FloodingBasedTreeAppC.AMSenderC.SenderC.AMQueueEntryP*/AMQu
 # 80 "/home/ubuntu1204/tinyos-main/tos/interfaces/AMSend.nc"
 static error_t /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$send(
 # 48 "/home/ubuntu1204/tinyos-main/tos/system/AMQueueImplP.nc"
-am_id_t arg_0x2b59fcf18c70, 
+am_id_t arg_0x2b360335cc70, 
 # 80 "/home/ubuntu1204/tinyos-main/tos/interfaces/AMSend.nc"
 am_addr_t addr, 
 #line 71
@@ -4768,7 +4375,7 @@ uint8_t len);
 # 100 "/home/ubuntu1204/tinyos-main/tos/interfaces/Send.nc"
 static void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$sendDone(
 # 46 "/home/ubuntu1204/tinyos-main/tos/system/AMQueueImplP.nc"
-uint8_t arg_0x2b59fcf19990, 
+uint8_t arg_0x2b360335d990, 
 # 96 "/home/ubuntu1204/tinyos-main/tos/interfaces/Send.nc"
 message_t * msg, 
 
@@ -4798,14 +4405,14 @@ static am_id_t /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMPacket$type(
 #line 143
 message_t * amsg);
 # 126 "/home/ubuntu1204/tinyos-main/tos/system/AMQueueImplP.nc"
-enum /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$__nesc_unnamed4332 {
+enum /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$__nesc_unnamed4305 {
 #line 126
   AMQueueImplP$0$CancelTask = 3U
 };
 #line 126
 typedef int /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$__nesc_sillytask_CancelTask[/*AMQueueP.AMQueueImplP*/AMQueueImplP$0$CancelTask];
 #line 169
-enum /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$__nesc_unnamed4333 {
+enum /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$__nesc_unnamed4306 {
 #line 169
   AMQueueImplP$0$errorTask = 4U
 };
@@ -4813,7 +4420,7 @@ enum /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$__nesc_unnamed4333 {
 typedef int /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$__nesc_sillytask_errorTask[/*AMQueueP.AMQueueImplP*/AMQueueImplP$0$errorTask];
 #line 57
 #line 55
-typedef struct /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$__nesc_unnamed4334 {
+typedef struct /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$__nesc_unnamed4307 {
   message_t * msg;
 } /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$queue_entry_t;
 
@@ -4846,381 +4453,6 @@ static void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$tryToSend(void );
 static void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$sendDone(am_id_t id, message_t *msg, error_t err);
 #line 215
 static inline void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$default$sendDone(uint8_t id, message_t *msg, error_t err);
-# 53 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/HplAtm128TimerCtrl8.nc"
-static Atm128_TIFR_t /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$TimerCtrl$getInterruptFlag(void );
-#line 46
-static void /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$TimerCtrl$setControl(Atm128TimerControl_t control);
-# 78 "/home/ubuntu1204/tinyos-main/tos/lib/timer/Alarm.nc"
-static void /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Alarm$fired(void );
-# 82 "/home/ubuntu1204/tinyos-main/tos/lib/timer/Counter.nc"
-static void /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Counter$overflow(void );
-# 44 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/HplAtm128TimerAsync.nc"
-static int /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$TimerAsync$compareBusy(void );
-#line 32
-static void /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$TimerAsync$setTimer0Asynchronous(void );
-# 48 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/HplAtm128Compare.nc"
-static /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Compare$size_type /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Compare$get(void );
-
-
-
-
-
-static void /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Compare$set(/*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Compare$size_type t);
-
-
-
-
-
-
-
-
-
-
-static void /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Compare$start(void );
-# 61 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/HplAtm128Timer.nc"
-static /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Timer$timer_size /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Timer$get(void );
-# 38 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/Atm128AlarmAsyncP.nc"
-uint8_t /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$set[1000];
-uint32_t /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$t0[1000];
-#line 39
-uint32_t /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$dt[1000];
-uint32_t /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$base[1000];
-
-
-
-enum /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$__nesc_unnamed4335 {
-  Atm128AlarmAsyncP$0$MINDT = 2, 
-  Atm128AlarmAsyncP$0$MAXT = 230
-};
-
-
-
-static void /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$setInterrupt(void );
-
-
-static inline error_t /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Init$init(void );
-#line 74
-static inline void /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$setOcr0(uint8_t n);
-#line 90
-static void /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$setInterrupt(void );
-#line 149
-static inline void /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Compare$fired(void );
-#line 161
-static uint32_t /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Counter$get(void );
-#line 204
-static inline void /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Alarm$stop(void );
-
-
-
-
-
-
-
-static void /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Alarm$startAt(uint32_t nt0, uint32_t ndt);
-
-
-
-
-
-
-
-
-
-static inline uint32_t /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Alarm$getNow(void );
-
-
-
-static inline uint32_t /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Alarm$getAlarm(void );
-
-
-
-static inline void /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Timer$overflow(void );
-# 70 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/HplAtm128Timer.nc"
-static void HplAtm128Timer0AsyncP$Timer0$overflow(void );
-# 58 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/HplAtm128Compare.nc"
-static void HplAtm128Timer0AsyncP$Compare$fired(void );
-# 57 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/sim/HplAtm128Timer0AsyncP.nc"
-bool HplAtm128Timer0AsyncP$inOverflow[1000];
-
-
-
-
-static inline void HplAtm128Timer0AsyncP$cancel_overflow(void );
-static inline sim_event_t *HplAtm128Timer0AsyncP$allocate_overflow(void );
-static void HplAtm128Timer0AsyncP$configure_overflow(sim_event_t *e);
-static inline void HplAtm128Timer0AsyncP$schedule_new_overflow(void );
-
-static inline sim_time_t HplAtm128Timer0AsyncP$clock_to_sim(sim_time_t t);
-static inline sim_time_t HplAtm128Timer0AsyncP$sim_to_clock(sim_time_t t);
-static uint16_t HplAtm128Timer0AsyncP$shiftFromScale(void );
-
-
-
-
-sim_time_t HplAtm128Timer0AsyncP$lastZero[1000];
-
-
-
-
-
-uint8_t HplAtm128Timer0AsyncP$oldScale[1000];
-
-
-
-static inline void HplAtm128Timer0AsyncP$cancel_compare(void );
-static inline sim_event_t *HplAtm128Timer0AsyncP$allocate_compare(void );
-static void HplAtm128Timer0AsyncP$configure_compare(sim_event_t *e);
-static void HplAtm128Timer0AsyncP$schedule_new_compare(void );
-
-static inline sim_time_t HplAtm128Timer0AsyncP$clock_to_sim(sim_time_t t);
-static inline sim_time_t HplAtm128Timer0AsyncP$sim_to_clock(sim_time_t t);
-static uint16_t HplAtm128Timer0AsyncP$shiftFromScale(void );
-
-
-void INTERRUPT_15(void )   ;
-
-
-
-
-
-void INTERRUPT_16(void )   ;
-
-
-
-
-
-
-
-static sim_time_t HplAtm128Timer0AsyncP$last_zero(void );
-
-
-
-
-
-
-
-static inline void HplAtm128Timer0AsyncP$notify_changed(void );
-
-
-
-
-
-
-
-
-
-
-static inline sim_time_t HplAtm128Timer0AsyncP$notify_clockTicksPerSec(void );
-#line 148
-static inline sim_time_t HplAtm128Timer0AsyncP$clock_to_sim(sim_time_t t);
-
-
-
-
-
-static inline sim_time_t HplAtm128Timer0AsyncP$sim_to_clock(sim_time_t t);
-
-
-
-
-
-static uint16_t HplAtm128Timer0AsyncP$shiftFromScale(void );
-#line 185
-sim_event_t *HplAtm128Timer0AsyncP$compare[1000];
-
-static inline void HplAtm128Timer0AsyncP$timer0_compare_handle(sim_event_t *evt);
-#line 223
-static inline sim_event_t *HplAtm128Timer0AsyncP$allocate_compare(void );
-
-
-
-
-
-
-
-static void HplAtm128Timer0AsyncP$configure_compare(sim_event_t *evt);
-#line 267
-static void HplAtm128Timer0AsyncP$schedule_new_compare(void );
-#line 282
-static uint8_t HplAtm128Timer0AsyncP$Timer0$get(void );
-#line 297
-static inline void HplAtm128Timer0AsyncP$Timer0$set(uint8_t newVal);
-#line 321
-static uint8_t HplAtm128Timer0AsyncP$Timer0$getScale(void );
-#line 364
-static inline void HplAtm128Timer0AsyncP$Timer0Ctrl$setControl(Atm128TimerControl_t x);
-#line 383
-static Atm128_TIFR_t HplAtm128Timer0AsyncP$Timer0Ctrl$getInterruptFlag(void );
-#line 447
-static inline void HplAtm128Timer0AsyncP$Compare$start(void );
-
-
-
-
-
-
-
-
-
-static uint8_t HplAtm128Timer0AsyncP$Compare$get(void );
-
-
-
-
-
-static void HplAtm128Timer0AsyncP$Compare$set(uint8_t t);
-#line 480
-sim_event_t *HplAtm128Timer0AsyncP$overflow[1000];
-static inline void HplAtm128Timer0AsyncP$timer0_overflow_handle(sim_event_t *evt);
-#line 500
-static inline sim_event_t *HplAtm128Timer0AsyncP$allocate_overflow(void );
-
-
-
-
-
-
-
-static void HplAtm128Timer0AsyncP$configure_overflow(sim_event_t *evt);
-#line 534
-static inline void HplAtm128Timer0AsyncP$schedule_new_overflow(void );
-
-
-
-
-
-
-
-
-
-
-static inline void HplAtm128Timer0AsyncP$cancel_overflow(void );
-#line 561
-static inline void HplAtm128Timer0AsyncP$TimerAsync$setTimer0Asynchronous(void );
-
-
-
-
-
-
-
-static inline int HplAtm128Timer0AsyncP$TimerAsync$compareBusy(void );
-
-
-
-
-
-
-
-static inline void HplAtm128Timer0AsyncP$cancel_compare(void );
-# 67 "/home/ubuntu1204/tinyos-main/tos/interfaces/TaskBasic.nc"
-static error_t /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$fired$postTask(void );
-# 109 "/home/ubuntu1204/tinyos-main/tos/lib/timer/Alarm.nc"
-static /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Alarm$size_type /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Alarm$getNow(void );
-#line 103
-static void /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Alarm$startAt(/*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Alarm$size_type t0, /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Alarm$size_type dt);
-#line 116
-static /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Alarm$size_type /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Alarm$getAlarm(void );
-#line 73
-static void /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Alarm$stop(void );
-# 83 "/home/ubuntu1204/tinyos-main/tos/lib/timer/Timer.nc"
-static void /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Timer$fired(void );
-# 74 "/home/ubuntu1204/tinyos-main/tos/lib/timer/AlarmToTimerC.nc"
-enum /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$__nesc_unnamed4336 {
-#line 74
-  AlarmToTimerC$0$fired = 5U
-};
-#line 74
-typedef int /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$__nesc_sillytask_fired[/*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$fired];
-#line 55
-uint32_t /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$m_dt[1000];
-bool /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$m_oneshot[1000];
-
-static inline void /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$start(uint32_t t0, uint32_t dt, bool oneshot);
-#line 71
-static inline void /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Timer$stop(void );
-
-
-static inline void /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$fired$runTask(void );
-
-
-
-
-
-
-static inline void /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Alarm$fired(void );
-#line 93
-static inline void /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Timer$startOneShotAt(uint32_t t0, uint32_t dt);
-
-
-static inline uint32_t /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Timer$getNow(void );
-# 67 "/home/ubuntu1204/tinyos-main/tos/interfaces/TaskBasic.nc"
-static error_t /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$updateFromTimer$postTask(void );
-# 136 "/home/ubuntu1204/tinyos-main/tos/lib/timer/Timer.nc"
-static uint32_t /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$TimerFrom$getNow(void );
-#line 129
-static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$TimerFrom$startOneShotAt(uint32_t t0, uint32_t dt);
-#line 78
-static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$TimerFrom$stop(void );
-
-
-
-
-static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$fired(
-# 48 "/home/ubuntu1204/tinyos-main/tos/lib/timer/VirtualizeTimerC.nc"
-uint8_t arg_0x2b59fd1c2c28);
-#line 71
-enum /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$__nesc_unnamed4337 {
-#line 71
-  VirtualizeTimerC$0$updateFromTimer = 6U
-};
-#line 71
-typedef int /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$__nesc_sillytask_updateFromTimer[/*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$updateFromTimer];
-#line 53
-enum /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$__nesc_unnamed4338 {
-
-  VirtualizeTimerC$0$NUM_TIMERS = 1U, 
-  VirtualizeTimerC$0$END_OF_LIST = 255
-};
-
-
-
-
-
-
-
-
-#line 59
-typedef struct /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$__nesc_unnamed4339 {
-
-  uint32_t t0;
-  uint32_t dt;
-  bool isoneshot : 1;
-  bool isrunning : 1;
-  bool _reserved : 6;
-} /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer_t;
-
-/*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer_t /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$m_timers[1000][/*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$NUM_TIMERS];
-
-
-
-
-static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$fireTimers(uint32_t now);
-#line 100
-static inline void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$updateFromTimer$runTask(void );
-#line 139
-static inline void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$TimerFrom$fired(void );
-
-
-
-
-static inline void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$startTimer(uint8_t num, uint32_t t0, uint32_t dt, bool isoneshot);
-#line 159
-static inline void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$startOneShot(uint8_t num, uint32_t dt);
-#line 204
-static inline void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$default$fired(uint8_t num);
-# 58 "/home/ubuntu1204/tinyos-main/tos/lib/timer/CounterToLocalTimeC.nc"
-static inline void /*HilTimerMilliC.CounterToLocalTimeC*/CounterToLocalTimeC$0$Counter$overflow(void );
 # 52 "/home/ubuntu1204/tinyos-main/tos/system/RandomMlcgC.nc"
 uint32_t RandomMlcgC$seed[1000];
 
@@ -5602,9 +4834,9 @@ static __inline  uint16_t __nesc_ntoh_uint16(const void * source)
   return ((uint16_t )base[0] << 8) | base[1];
 }
 
-# 78 "FloodingBasedTreeC.nc"
+# 75 "FloodingBasedTreeC.nc"
 static inline void FloodingBasedTreeC$processFloodingBasedTree(uint16_t nodeid, FloodingBasedTreeMsgType m_type, uint16_t level_no)
-#line 78
+#line 75
 {
   if (FloodingBasedTreeC$my_level[sim_node()] != 100) {
       return;
@@ -5615,12 +4847,12 @@ static inline void FloodingBasedTreeC$processFloodingBasedTree(uint16_t nodeid, 
 }
 
 static inline message_t *FloodingBasedTreeC$Receive$receive(message_t *msg, void *payload, uint8_t len)
-#line 87
+#line 84
 {
   if (len == sizeof(FloodingBasedTreeMsg )) {
       FloodingBasedTreeMsg *fbtpkt = (FloodingBasedTreeMsg *)payload;
 
-#line 90
+#line 87
       FloodingBasedTreeC$processFloodingBasedTree(__nesc_ntoh_uint16(fbtpkt->nodeid.nxdata), __nesc_ntoh_uint16(fbtpkt->m_type.nxdata), __nesc_ntoh_uint16(fbtpkt->level_no.nxdata));
     }
   return msg;
@@ -5634,13 +4866,13 @@ static inline message_t *TossimActiveMessageC$Receive$default$receive(am_id_t id
 }
 
 # 78 "/home/ubuntu1204/tinyos-main/tos/interfaces/Receive.nc"
-inline static message_t * TossimActiveMessageC$Receive$receive(am_id_t arg_0x2b59fcce9340, message_t * msg, void * payload, uint8_t len){
+inline static message_t * TossimActiveMessageC$Receive$receive(am_id_t arg_0x2b360311d340, message_t * msg, void * payload, uint8_t len){
 #line 78
   nx_struct message_t *__nesc_result;
 #line 78
 
 #line 78
-  switch (arg_0x2b59fcce9340) {
+  switch (arg_0x2b360311d340) {
 #line 78
     case 7:
 #line 78
@@ -5650,7 +4882,7 @@ inline static message_t * TossimActiveMessageC$Receive$receive(am_id_t arg_0x2b5
 #line 78
     default:
 #line 78
-      __nesc_result = TossimActiveMessageC$Receive$default$receive(arg_0x2b59fcce9340, msg, payload, len);
+      __nesc_result = TossimActiveMessageC$Receive$default$receive(arg_0x2b360311d340, msg, payload, len);
 #line 78
       break;
 #line 78
@@ -5690,13 +4922,13 @@ inline static void * FloodingBasedTreeC$Packet$getPayload(message_t * msg, uint8
 }
 #line 126
 # 80 "/home/ubuntu1204/tinyos-main/tos/interfaces/AMSend.nc"
-inline static error_t /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$send(am_id_t arg_0x2b59fcf18c70, am_addr_t addr, message_t * msg, uint8_t len){
+inline static error_t /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$send(am_id_t arg_0x2b360335cc70, am_addr_t addr, message_t * msg, uint8_t len){
 #line 80
   unsigned char __nesc_result;
 #line 80
 
 #line 80
-  __nesc_result = TossimActiveMessageC$AMSend$send(arg_0x2b59fcf18c70, addr, msg, len);
+  __nesc_result = TossimActiveMessageC$AMSend$send(arg_0x2b360335cc70, addr, msg, len);
 #line 80
 
 #line 80
@@ -5893,9 +5125,9 @@ inline static error_t FloodingBasedTreeC$AMSend$send(am_addr_t addr, message_t *
 }
 #line 80
 #line 110
-inline static void TossimActiveMessageC$AMSend$sendDone(am_id_t arg_0x2b59fccea220, message_t * msg, error_t error){
+inline static void TossimActiveMessageC$AMSend$sendDone(am_id_t arg_0x2b360311e220, message_t * msg, error_t error){
 #line 110
-  /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$sendDone(arg_0x2b59fccea220, msg, error);
+  /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$sendDone(arg_0x2b360311e220, msg, error);
 #line 110
 }
 #line 110
@@ -6725,13 +5957,13 @@ static inline message_t *TossimActiveMessageC$Snoop$default$receive(am_id_t id, 
 }
 
 # 78 "/home/ubuntu1204/tinyos-main/tos/interfaces/Receive.nc"
-inline static message_t * TossimActiveMessageC$Snoop$receive(am_id_t arg_0x2b59fcce8020, message_t * msg, void * payload, uint8_t len){
+inline static message_t * TossimActiveMessageC$Snoop$receive(am_id_t arg_0x2b360311c020, message_t * msg, void * payload, uint8_t len){
 #line 78
   nx_struct message_t *__nesc_result;
 #line 78
 
 #line 78
-    __nesc_result = TossimActiveMessageC$Snoop$default$receive(arg_0x2b59fcce8020, msg, payload, len);
+    __nesc_result = TossimActiveMessageC$Snoop$default$receive(arg_0x2b360311c020, msg, payload, len);
 #line 78
 
 #line 78
@@ -6861,108 +6093,18 @@ inline static error_t FloodingBasedTreeC$SplitControl$start(void ){
 #line 104
 }
 #line 104
-# 222 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/Atm128AlarmAsyncP.nc"
-static inline uint32_t /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Alarm$getNow(void )
-#line 222
-{
-  return /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Counter$get();
-}
-
-# 109 "/home/ubuntu1204/tinyos-main/tos/lib/timer/Alarm.nc"
-inline static /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Alarm$size_type /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Alarm$getNow(void ){
-#line 109
-  unsigned int __nesc_result;
-#line 109
-
-#line 109
-  __nesc_result = /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Alarm$getNow();
-#line 109
-
-#line 109
-  return __nesc_result;
-#line 109
-}
-#line 109
-# 96 "/home/ubuntu1204/tinyos-main/tos/lib/timer/AlarmToTimerC.nc"
-static inline uint32_t /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Timer$getNow(void )
-{
-#line 97
-  return /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Alarm$getNow();
-}
-
-# 136 "/home/ubuntu1204/tinyos-main/tos/lib/timer/Timer.nc"
-inline static uint32_t /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$TimerFrom$getNow(void ){
-#line 136
-  unsigned int __nesc_result;
-#line 136
-
-#line 136
-  __nesc_result = /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Timer$getNow();
-#line 136
-
-#line 136
-  return __nesc_result;
-#line 136
-}
-#line 136
-# 67 "/home/ubuntu1204/tinyos-main/tos/interfaces/TaskBasic.nc"
-inline static error_t /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$updateFromTimer$postTask(void ){
-#line 67
-  unsigned char __nesc_result;
-#line 67
-
-#line 67
-  __nesc_result = SimSchedulerBasicP$TaskBasic$postTask(/*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$updateFromTimer);
-#line 67
-
-#line 67
-  return __nesc_result;
-#line 67
-}
-#line 67
-# 144 "/home/ubuntu1204/tinyos-main/tos/lib/timer/VirtualizeTimerC.nc"
-static inline void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$startTimer(uint8_t num, uint32_t t0, uint32_t dt, bool isoneshot)
-{
-  /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer_t *timer = &/*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$m_timers[sim_node()][num];
-
-#line 147
-  timer->t0 = t0;
-  timer->dt = dt;
-  timer->isoneshot = isoneshot;
-  timer->isrunning = TRUE;
-  /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$updateFromTimer$postTask();
-}
-
-
-
-
-
-
-static inline void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$startOneShot(uint8_t num, uint32_t dt)
-{
-  /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$startTimer(num, /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$TimerFrom$getNow(), dt, TRUE);
-}
-
-# 73 "/home/ubuntu1204/tinyos-main/tos/lib/timer/Timer.nc"
-inline static void FloodingBasedTreeC$MilliTimer$startOneShot(uint32_t dt){
-#line 73
-  /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$startOneShot(0U, dt);
-#line 73
-}
-#line 73
-# 49 "FloodingBasedTreeC.nc"
+# 48 "FloodingBasedTreeC.nc"
 static inline void FloodingBasedTreeC$SplitControl$startDone(error_t err)
-#line 49
+#line 48
 {
   if (err == SUCCESS) {
       sim_log_debug(151U, "FloodingBasedTreeC", "Component started at %s \n", sim_time_string());
       if (TOS_NODE_ID == 1) {
-        FloodingBasedTreeC$MilliTimer$startOneShot(10240);
+          FloodingBasedTreeC$my_level[sim_node()] = 0;
+          FloodingBasedTreeC$sendMessage();
         }
     }
-  else 
-#line 55
-    {
+  else {
       FloodingBasedTreeC$SplitControl$start();
     }
 }
@@ -6982,9 +6124,9 @@ static inline void TossimPacketModelC$startDoneTask$runTask(void )
   TossimPacketModelC$Control$startDone(SUCCESS);
 }
 
-# 65 "FloodingBasedTreeC.nc"
+# 62 "FloodingBasedTreeC.nc"
 static inline void FloodingBasedTreeC$SplitControl$stopDone(error_t err)
-#line 65
+#line 62
 {
   sim_log_debug(152U, "FloodingBasedTreeC", "Component stopped at %s \n", sim_time_string());
 }
@@ -7040,9 +6182,9 @@ static inline void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$default$sendDone
 }
 
 # 100 "/home/ubuntu1204/tinyos-main/tos/interfaces/Send.nc"
-inline static void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$sendDone(uint8_t arg_0x2b59fcf19990, message_t * msg, error_t error){
+inline static void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$sendDone(uint8_t arg_0x2b360335d990, message_t * msg, error_t error){
 #line 100
-  switch (arg_0x2b59fcf19990) {
+  switch (arg_0x2b360335d990) {
 #line 100
     case 0U:
 #line 100
@@ -7052,7 +6194,7 @@ inline static void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$sendDone(uint8_t
 #line 100
     default:
 #line 100
-      /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$default$sendDone(arg_0x2b59fcf19990, msg, error);
+      /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$default$sendDone(arg_0x2b360335d990, msg, error);
 #line 100
       break;
 #line 100
@@ -7105,187 +6247,15 @@ static inline void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$CancelTask$runTask(vo
     }
 }
 
-# 139 "/home/ubuntu1204/tinyos-main/tos/lib/timer/VirtualizeTimerC.nc"
-static inline void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$TimerFrom$fired(void )
-{
-  /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$fireTimers(/*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$TimerFrom$getNow());
-}
-
-# 83 "/home/ubuntu1204/tinyos-main/tos/lib/timer/Timer.nc"
-inline static void /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Timer$fired(void ){
-#line 83
-  /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$TimerFrom$fired();
-#line 83
-}
-#line 83
-# 226 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/Atm128AlarmAsyncP.nc"
-static inline uint32_t /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Alarm$getAlarm(void )
-#line 226
-{
-  { __nesc_atomic_t __nesc_atomic = __nesc_atomic_start();
-#line 227
-    {
-      unsigned int __nesc_temp = 
-#line 227
-      /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$t0[sim_node()] + /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$dt[sim_node()];
-
-      {
-#line 227
-        __nesc_atomic_end(__nesc_atomic); 
-#line 227
-        return __nesc_temp;
-      }
-    }
-#line 229
-    __nesc_atomic_end(__nesc_atomic); }
-}
-
-# 116 "/home/ubuntu1204/tinyos-main/tos/lib/timer/Alarm.nc"
-inline static /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Alarm$size_type /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Alarm$getAlarm(void ){
-#line 116
-  unsigned int __nesc_result;
-#line 116
-
-#line 116
-  __nesc_result = /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Alarm$getAlarm();
-#line 116
-
-#line 116
-  return __nesc_result;
-#line 116
-}
-#line 116
-#line 103
-inline static void /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Alarm$startAt(/*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Alarm$size_type t0, /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Alarm$size_type dt){
-#line 103
-  /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Alarm$startAt(t0, dt);
-#line 103
-}
-#line 103
-# 58 "/home/ubuntu1204/tinyos-main/tos/lib/timer/AlarmToTimerC.nc"
-static inline void /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$start(uint32_t t0, uint32_t dt, bool oneshot)
-{
-  /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$m_dt[sim_node()] = dt;
-  /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$m_oneshot[sim_node()] = oneshot;
-  /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Alarm$startAt(t0, dt);
-}
-
-
-
-
-
-
-
-
-
-
-static inline void /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$fired$runTask(void )
-{
-  if (/*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$m_oneshot[sim_node()] == FALSE) {
-    /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$start(/*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Alarm$getAlarm(), /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$m_dt[sim_node()], FALSE);
-    }
-#line 78
-  /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Timer$fired();
-}
-
-#line 93
-static inline void /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Timer$startOneShotAt(uint32_t t0, uint32_t dt)
-{
-#line 94
-  /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$start(t0, dt, TRUE);
-}
-
-# 129 "/home/ubuntu1204/tinyos-main/tos/lib/timer/Timer.nc"
-inline static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$TimerFrom$startOneShotAt(uint32_t t0, uint32_t dt){
-#line 129
-  /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Timer$startOneShotAt(t0, dt);
-#line 129
-}
-#line 129
-# 204 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/Atm128AlarmAsyncP.nc"
-static inline void /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Alarm$stop(void )
-#line 204
-{
-  { __nesc_atomic_t __nesc_atomic = __nesc_atomic_start();
-#line 205
-    /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$set[sim_node()] = FALSE;
-#line 205
-    __nesc_atomic_end(__nesc_atomic); }
-}
-
-# 73 "/home/ubuntu1204/tinyos-main/tos/lib/timer/Alarm.nc"
-inline static void /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Alarm$stop(void ){
-#line 73
-  /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Alarm$stop();
-#line 73
-}
-#line 73
-# 71 "/home/ubuntu1204/tinyos-main/tos/lib/timer/AlarmToTimerC.nc"
-static inline void /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Timer$stop(void )
-{
-#line 72
-  /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Alarm$stop();
-}
-
-# 78 "/home/ubuntu1204/tinyos-main/tos/lib/timer/Timer.nc"
-inline static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$TimerFrom$stop(void ){
-#line 78
-  /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Timer$stop();
-#line 78
-}
-#line 78
-# 100 "/home/ubuntu1204/tinyos-main/tos/lib/timer/VirtualizeTimerC.nc"
-static inline void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$updateFromTimer$runTask(void )
-{
-
-
-
-
-  uint32_t now = /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$TimerFrom$getNow();
-  int32_t min_remaining = (1UL << 31) - 1;
-  bool min_remaining_isset = FALSE;
-  uint16_t num;
-
-  /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$TimerFrom$stop();
-
-  for (num = 0; num < /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$NUM_TIMERS; num++) 
-    {
-      /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer_t *timer = &/*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$m_timers[sim_node()][num];
-
-      if (timer->isrunning) 
-        {
-          uint32_t elapsed = now - timer->t0;
-          int32_t remaining = timer->dt - elapsed;
-
-          if (remaining < min_remaining) 
-            {
-              min_remaining = remaining;
-              min_remaining_isset = TRUE;
-            }
-        }
-    }
-
-  if (min_remaining_isset) 
-    {
-      if (min_remaining <= 0) {
-        /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$fireTimers(now);
-        }
-      else {
-#line 135
-        /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$TimerFrom$startOneShotAt(now, min_remaining);
-        }
-    }
-}
-
 # 221 "/home/ubuntu1204/tinyos-main/tos/lib/tossim/SimSchedulerBasicP.nc"
 static inline void SimSchedulerBasicP$TaskBasic$default$runTask(uint8_t id)
 {
 }
 
 # 75 "/home/ubuntu1204/tinyos-main/tos/interfaces/TaskBasic.nc"
-inline static void SimSchedulerBasicP$TaskBasic$runTask(uint8_t arg_0x2b59fc9fdab0){
+inline static void SimSchedulerBasicP$TaskBasic$runTask(uint8_t arg_0x2b3602e31ab0){
 #line 75
-  switch (arg_0x2b59fc9fdab0) {
+  switch (arg_0x2b3602e31ab0) {
 #line 75
     case TossimPacketModelC$startDoneTask:
 #line 75
@@ -7317,21 +6287,9 @@ inline static void SimSchedulerBasicP$TaskBasic$runTask(uint8_t arg_0x2b59fc9fda
 #line 75
       break;
 #line 75
-    case /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$fired:
-#line 75
-      /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$fired$runTask();
-#line 75
-      break;
-#line 75
-    case /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$updateFromTimer:
-#line 75
-      /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$updateFromTimer$runTask();
-#line 75
-      break;
-#line 75
     default:
 #line 75
-      SimSchedulerBasicP$TaskBasic$default$runTask(arg_0x2b59fc9fdab0);
+      SimSchedulerBasicP$TaskBasic$default$runTask(arg_0x2b3602e31ab0);
 #line 75
       break;
 #line 75
@@ -7339,418 +6297,7 @@ inline static void SimSchedulerBasicP$TaskBasic$runTask(uint8_t arg_0x2b59fc9fda
 #line 75
 }
 #line 75
-# 61 "/home/ubuntu1204/tinyos-main/tos/lib/tossim/SimMoteP.nc"
-static inline long long int SimMoteP$SimMote$getStartTime(void )
-#line 61
-{
-  return SimMoteP$startTime[sim_node()];
-}
-
-# 127 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/sim/HplAtm128Timer0AsyncP.nc"
-static inline sim_time_t HplAtm128Timer0AsyncP$notify_clockTicksPerSec(void )
-#line 127
-{
-  return ATM128_TIMER0_TICKSPPS;
-}
-
-#line 154
-static inline sim_time_t HplAtm128Timer0AsyncP$sim_to_clock(sim_time_t t)
-#line 154
-{
-  t *= HplAtm128Timer0AsyncP$notify_clockTicksPerSec();
-  t /= sim_ticks_per_sec();
-  return t;
-}
-
-# 53 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/HplAtm128TimerCtrl8.nc"
-inline static Atm128_TIFR_t /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$TimerCtrl$getInterruptFlag(void ){
-#line 53
-  union __nesc_unnamed4311 __nesc_result;
-#line 53
-
-#line 53
-  __nesc_result = HplAtm128Timer0AsyncP$Timer0Ctrl$getInterruptFlag();
-#line 53
-
-#line 53
-  return __nesc_result;
-#line 53
-}
-#line 53
-# 60 "FloodingBasedTreeC.nc"
-static inline void FloodingBasedTreeC$MilliTimer$fired(void )
-#line 60
-{
-  FloodingBasedTreeC$my_level[sim_node()] = 0;
-  FloodingBasedTreeC$sendMessage();
-}
-
-# 204 "/home/ubuntu1204/tinyos-main/tos/lib/timer/VirtualizeTimerC.nc"
-static inline void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$default$fired(uint8_t num)
-{
-}
-
-# 83 "/home/ubuntu1204/tinyos-main/tos/lib/timer/Timer.nc"
-inline static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$fired(uint8_t arg_0x2b59fd1c2c28){
-#line 83
-  switch (arg_0x2b59fd1c2c28) {
-#line 83
-    case 0U:
-#line 83
-      FloodingBasedTreeC$MilliTimer$fired();
-#line 83
-      break;
-#line 83
-    default:
-#line 83
-      /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$default$fired(arg_0x2b59fd1c2c28);
-#line 83
-      break;
-#line 83
-    }
-#line 83
-}
-#line 83
-# 54 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/HplAtm128Compare.nc"
-inline static void /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Compare$set(/*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Compare$size_type t){
-#line 54
-  HplAtm128Timer0AsyncP$Compare$set(t);
-#line 54
-}
-#line 54
-# 61 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/HplAtm128Timer.nc"
-inline static /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Timer$timer_size /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Timer$get(void ){
-#line 61
-  unsigned char __nesc_result;
-#line 61
-
-#line 61
-  __nesc_result = HplAtm128Timer0AsyncP$Timer0$get();
-#line 61
-
-#line 61
-  return __nesc_result;
-#line 61
-}
-#line 61
-# 569 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/sim/HplAtm128Timer0AsyncP.nc"
-static inline int HplAtm128Timer0AsyncP$TimerAsync$compareBusy(void )
-#line 569
-{
-  return (* (volatile uint8_t *)&atm128RegFile[sim_node()][0x30] & (1 << OCR0UB)) != 0;
-}
-
-# 44 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/HplAtm128TimerAsync.nc"
-inline static int /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$TimerAsync$compareBusy(void ){
-#line 44
-  int __nesc_result;
-#line 44
-
-#line 44
-  __nesc_result = HplAtm128Timer0AsyncP$TimerAsync$compareBusy();
-#line 44
-
-#line 44
-  return __nesc_result;
-#line 44
-}
-#line 44
-# 74 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/Atm128AlarmAsyncP.nc"
-static inline void /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$setOcr0(uint8_t n)
-#line 74
-{
-  while (/*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$TimerAsync$compareBusy()) 
-    ;
-  if (n == /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Timer$get()) {
-    n++;
-    }
-
-
-  if (/*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$base[sim_node()] + n + 1 < /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$base[sim_node()]) {
-    n = -/*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$base[sim_node()] - 1;
-    }
-#line 84
-  /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Compare$set(n);
-}
-
-# 577 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/sim/HplAtm128Timer0AsyncP.nc"
-static inline void HplAtm128Timer0AsyncP$cancel_compare(void )
-#line 577
-{
-  sim_log_debug(186U, "HplAtm128CompareC", "Cancelling compare at 0x%p\n", HplAtm128Timer0AsyncP$compare[sim_node()]);
-  if (HplAtm128Timer0AsyncP$compare[sim_node()] != (void *)0) {
-      HplAtm128Timer0AsyncP$compare[sim_node()]->cancelled = 1;
-      HplAtm128Timer0AsyncP$compare[sim_node()]->cleanup = sim_queue_cleanup_total;
-    }
-}
-
-#line 116
-static inline void HplAtm128Timer0AsyncP$notify_changed(void )
-#line 116
-{
-  uint8_t newScale = HplAtm128Timer0AsyncP$Timer0$getScale();
-
-#line 118
-  if (newScale != AVR_CLOCK_OFF && 
-  HplAtm128Timer0AsyncP$oldScale[sim_node()] == AVR_CLOCK_OFF) {
-      HplAtm128Timer0AsyncP$lastZero[sim_node()] = sim_time();
-    }
-  HplAtm128Timer0AsyncP$oldScale[sim_node()] = newScale;
-
-  HplAtm128Timer0AsyncP$schedule_new_compare();
-}
-
-#line 545
-static inline void HplAtm128Timer0AsyncP$cancel_overflow(void )
-#line 545
-{
-  if (HplAtm128Timer0AsyncP$overflow[sim_node()] != (void *)0) {
-      HplAtm128Timer0AsyncP$overflow[sim_node()]->cancelled = 1;
-      sim_log_debug(185U, "HplAtm128Timer0AsyncP", "Cancelling overflow %p.\n", HplAtm128Timer0AsyncP$overflow[sim_node()]);
-      HplAtm128Timer0AsyncP$overflow[sim_node()]->cleanup = sim_queue_cleanup_total;
-    }
-}
-
-#line 481
-static inline void HplAtm128Timer0AsyncP$timer0_overflow_handle(sim_event_t *evt)
-#line 481
-{
-  if (evt->cancelled) {
-      return;
-    }
-  else {
-      if ((atm128RegFile[sim_node()][ATM128_TIMSK] & (1 << TOIE0)) != 0) {
-          atm128RegFile[sim_node()][ATM128_TIFR] &= ~(1 << TOV0);
-          sim_log_debug(182U, "HplAtm128Timer0AsyncP", "Overflow interrupt at %s\n", sim_time_string());
-          INTERRUPT_16();
-        }
-      else {
-          sim_log_debug(183U, "HplAtm128Timer0AsyncP", "Setting overflow bit at %s\n", sim_time_string());
-          atm128RegFile[sim_node()][ATM128_TIFR] |= 1 << TOV0;
-        }
-      HplAtm128Timer0AsyncP$configure_overflow(evt);
-      sim_queue_insert(evt);
-    }
-}
-
-static inline sim_event_t *HplAtm128Timer0AsyncP$allocate_overflow(void )
-#line 500
-{
-  sim_event_t *newEvent = sim_queue_allocate_event();
-
-  newEvent->handle = HplAtm128Timer0AsyncP$timer0_overflow_handle;
-  newEvent->cleanup = sim_queue_cleanup_none;
-  return newEvent;
-}
-
-#line 534
-static inline void HplAtm128Timer0AsyncP$schedule_new_overflow(void )
-#line 534
-{
-  sim_event_t *newEvent = HplAtm128Timer0AsyncP$allocate_overflow();
-
-#line 536
-  HplAtm128Timer0AsyncP$configure_overflow(newEvent);
-
-  if (HplAtm128Timer0AsyncP$overflow[sim_node()] != (void *)0) {
-      HplAtm128Timer0AsyncP$cancel_overflow();
-    }
-  HplAtm128Timer0AsyncP$overflow[sim_node()] = newEvent;
-  sim_queue_insert(newEvent);
-}
-
-#line 148
-static inline sim_time_t HplAtm128Timer0AsyncP$clock_to_sim(sim_time_t t)
-#line 148
-{
-  t *= sim_ticks_per_sec();
-  t /= HplAtm128Timer0AsyncP$notify_clockTicksPerSec();
-  return t;
-}
-
-#line 297
-static inline void HplAtm128Timer0AsyncP$Timer0$set(uint8_t newVal)
-#line 297
-{
-  uint8_t curVal = HplAtm128Timer0AsyncP$Timer0$get();
-
-#line 299
-  sim_log_debug(175U, "HplAtm128Timer0AsyncP", "HplAtm128Timer0AsyncP: Setting timer: %hhu\n", newVal);
-  if (newVal == curVal) {
-      return;
-    }
-  else {
-      sim_time_t adjustment = curVal - newVal;
-
-#line 305
-      adjustment = adjustment << HplAtm128Timer0AsyncP$shiftFromScale();
-      adjustment = HplAtm128Timer0AsyncP$clock_to_sim(adjustment);
-
-      if (newVal < curVal) {
-          HplAtm128Timer0AsyncP$lastZero[sim_node()] += adjustment;
-        }
-      else {
-          HplAtm128Timer0AsyncP$lastZero[sim_node()] -= adjustment;
-        }
-
-      HplAtm128Timer0AsyncP$schedule_new_overflow();
-      HplAtm128Timer0AsyncP$notify_changed();
-    }
-}
-
-#line 187
-static inline void HplAtm128Timer0AsyncP$timer0_compare_handle(sim_event_t *evt)
-#line 187
-{
-  sim_log_debug(165U, "HplAtm128Timer0AsyncP", "Beginning compare 0x%p at %s\n", evt, sim_time_string());
-  if (evt->cancelled) {
-      return;
-    }
-  else {
-      char timeStr[128];
-
-#line 194
-      sim_print_now(timeStr, 128);
-      sim_log_debug(166U, "HplAtm128Timer0AsyncP", "Handling compare at 0x%p @ %s\n", evt, sim_time_string());
-
-      if ((atm128RegFile[sim_node()][ATM128_TCCR0] & (1 << WGM01)) != 0 && !((atm128RegFile[sim_node()][ATM128_TCCR0] & (1 << WGM00)) != 0)) {
-          sim_log_debug(167U, "HplAtm128Timer0AsyncP", "%s: CTC is set, clear timer.\n", __FUNCTION__);
-          HplAtm128Timer0AsyncP$Timer0$set(0);
-        }
-      else {
-          sim_log_debug(168U, "HplAtm128Timer0AsyncP", "%s: TCCR is 0x%hhx, %i, %i\n", __FUNCTION__, * (volatile uint8_t *)&atm128RegFile[sim_node()][0x33], (int )((atm128RegFile[sim_node()][ATM128_TCCR0] & (1 << WGM01)) != 0), (int )((atm128RegFile[sim_node()][ATM128_TCCR0] & (1 << WGM00)) != 0));
-        }
-
-      if ((atm128RegFile[sim_node()][ATM128_TIMSK] & (1 << OCIE0)) != 0) {
-          sim_log_debug(169U, "HplAtm128Timer0AsyncP", "TIFR is %hhx\n", * (volatile uint8_t *)&atm128RegFile[sim_node()][0x36]);
-          atm128RegFile[sim_node()][ATM128_TIFR] &= ~(1 << OCF0);
-          sim_log_debug(170U, "HplAtm128Timer0AsyncP", "TIFR is %hhx\n", * (volatile uint8_t *)&atm128RegFile[sim_node()][0x36]);
-          sim_log_debug(171U, "HplAtm128Timer0AsyncP", "Compare interrupt @ %s\n", timeStr);
-          INTERRUPT_15();
-        }
-      else {
-          atm128RegFile[sim_node()][ATM128_TIFR] |= 1 << OCF0;
-        }
-
-      if (! evt->cancelled) {
-          HplAtm128Timer0AsyncP$configure_compare(evt);
-          sim_queue_insert(evt);
-        }
-    }
-}
-
-static inline sim_event_t *HplAtm128Timer0AsyncP$allocate_compare(void )
-#line 223
-{
-  sim_event_t *newEvent = sim_queue_allocate_event();
-
-#line 225
-  sim_log_debug(172U, "HplAtm128Timer0AsyncP", "Allocated compare at 0x%p\n", newEvent);
-  newEvent->handle = HplAtm128Timer0AsyncP$timer0_compare_handle;
-  newEvent->cleanup = sim_queue_cleanup_none;
-  return newEvent;
-}
-
-# 230 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/Atm128AlarmAsyncP.nc"
-static inline void /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Timer$overflow(void )
-#line 230
-{
-}
-
-# 70 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/HplAtm128Timer.nc"
-inline static void HplAtm128Timer0AsyncP$Timer0$overflow(void ){
-#line 70
-  /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Timer$overflow();
-#line 70
-}
-#line 70
-# 58 "/home/ubuntu1204/tinyos-main/tos/lib/timer/CounterToLocalTimeC.nc"
-static inline void /*HilTimerMilliC.CounterToLocalTimeC*/CounterToLocalTimeC$0$Counter$overflow(void )
-{
-}
-
-# 82 "/home/ubuntu1204/tinyos-main/tos/lib/timer/Counter.nc"
-inline static void /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Counter$overflow(void ){
-#line 82
-  /*HilTimerMilliC.CounterToLocalTimeC*/CounterToLocalTimeC$0$Counter$overflow();
-#line 82
-}
-#line 82
-# 85 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/sim/atm128hardware.h"
-static __inline void __nesc_enable_interrupt()
-#line 85
-{
-  atm128RegFile[sim_node()][* (volatile uint8_t *)&atm128RegFile[sim_node()][0x3F]] |= 1 << 7;
-}
-
-# 48 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/HplAtm128Compare.nc"
-inline static /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Compare$size_type /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Compare$get(void ){
-#line 48
-  unsigned char __nesc_result;
-#line 48
-
-#line 48
-  __nesc_result = HplAtm128Timer0AsyncP$Compare$get();
-#line 48
-
-#line 48
-  return __nesc_result;
-#line 48
-}
-#line 48
-# 149 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/Atm128AlarmAsyncP.nc"
-static inline void /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Compare$fired(void )
-#line 149
-{
-  int overflowed;
-
-
-  /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$base[sim_node()] += /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Compare$get() + 1U;
-  overflowed = !/*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$base[sim_node()];
-  __nesc_enable_interrupt();
-  /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$setInterrupt();
-  if (overflowed) {
-    /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Counter$overflow();
-    }
-}
-
-# 58 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/HplAtm128Compare.nc"
-inline static void HplAtm128Timer0AsyncP$Compare$fired(void ){
-#line 58
-  /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Compare$fired();
-#line 58
-}
-#line 58
-# 67 "/home/ubuntu1204/tinyos-main/tos/interfaces/TaskBasic.nc"
-inline static error_t /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$fired$postTask(void ){
 #line 67
-  unsigned char __nesc_result;
-#line 67
-
-#line 67
-  __nesc_result = SimSchedulerBasicP$TaskBasic$postTask(/*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$fired);
-#line 67
-
-#line 67
-  return __nesc_result;
-#line 67
-}
-#line 67
-# 81 "/home/ubuntu1204/tinyos-main/tos/lib/timer/AlarmToTimerC.nc"
-static inline void /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Alarm$fired(void )
-{
-#line 82
-  /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$fired$postTask();
-}
-
-# 78 "/home/ubuntu1204/tinyos-main/tos/lib/timer/Alarm.nc"
-inline static void /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Alarm$fired(void ){
-#line 78
-  /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$Alarm$fired();
-#line 78
-}
-#line 78
-# 67 "/home/ubuntu1204/tinyos-main/tos/interfaces/TaskBasic.nc"
 inline static error_t TossimPacketModelC$startDoneTask$postTask(void ){
 #line 67
   unsigned char __nesc_result;
@@ -7934,70 +6481,6 @@ static inline error_t TossimPacketModelC$Init$init(void )
   return SUCCESS;
 }
 
-# 447 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/sim/HplAtm128Timer0AsyncP.nc"
-static inline void HplAtm128Timer0AsyncP$Compare$start(void )
-#line 447
-{
-#line 447
-  atm128RegFile[sim_node()][ATM128_TIMSK] |= 1 << OCIE0;
-}
-
-# 65 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/HplAtm128Compare.nc"
-inline static void /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Compare$start(void ){
-#line 65
-  HplAtm128Timer0AsyncP$Compare$start();
-#line 65
-}
-#line 65
-# 364 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/sim/HplAtm128Timer0AsyncP.nc"
-static inline void HplAtm128Timer0AsyncP$Timer0Ctrl$setControl(Atm128TimerControl_t x)
-#line 364
-{
-  sim_log_debug(177U, "HplAtm128Timer0AsyncP", "Setting control to be 0x%hhx\n", x.flat);
-  * (volatile uint8_t *)&atm128RegFile[sim_node()][0x33] = x.flat;
-}
-
-# 46 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/HplAtm128TimerCtrl8.nc"
-inline static void /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$TimerCtrl$setControl(Atm128TimerControl_t control){
-#line 46
-  HplAtm128Timer0AsyncP$Timer0Ctrl$setControl(control);
-#line 46
-}
-#line 46
-# 561 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/sim/HplAtm128Timer0AsyncP.nc"
-static inline void HplAtm128Timer0AsyncP$TimerAsync$setTimer0Asynchronous(void )
-#line 561
-{
-  * (volatile uint8_t *)&atm128RegFile[sim_node()][0x30] |= 1 << AS0;
-}
-
-# 32 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/HplAtm128TimerAsync.nc"
-inline static void /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$TimerAsync$setTimer0Asynchronous(void ){
-#line 32
-  HplAtm128Timer0AsyncP$TimerAsync$setTimer0Asynchronous();
-#line 32
-}
-#line 32
-# 54 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/Atm128AlarmAsyncP.nc"
-static inline error_t /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Init$init(void )
-#line 54
-{
-  /* atomic removed: atomic calls only */
-  {
-    Atm128TimerControl_t x;
-
-    /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$TimerAsync$setTimer0Asynchronous();
-    x.flat = 0;
-    x.bits.cs = 3;
-    x.bits.wgm1 = 1;
-    /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$TimerCtrl$setControl(x);
-    /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Compare$set(/*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$MAXT);
-    /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Compare$start();
-  }
-  /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$setInterrupt();
-  return SUCCESS;
-}
-
 # 55 "/home/ubuntu1204/tinyos-main/tos/system/RandomMlcgC.nc"
 static inline error_t RandomMlcgC$Init$init(void )
 #line 55
@@ -8018,8 +6501,6 @@ inline static error_t SimMainP$SoftwareInit$init(void ){
 #line 62
   __nesc_result = RandomMlcgC$Init$init();
 #line 62
-  __nesc_result = ecombine(__nesc_result, /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Init$init());
-#line 62
   __nesc_result = ecombine(__nesc_result, TossimPacketModelC$Init$init());
 #line 62
 
@@ -8028,9 +6509,16 @@ inline static error_t SimMainP$SoftwareInit$init(void ){
 #line 62
 }
 #line 62
-# 44 "FloodingBasedTreeC.nc"
+# 85 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/sim/atm128hardware.h"
+static __inline void __nesc_enable_interrupt()
+#line 85
+{
+  atm128RegFile[sim_node()][* (volatile uint8_t *)&atm128RegFile[sim_node()][0x3F]] |= 1 << 7;
+}
+
+# 43 "FloodingBasedTreeC.nc"
 static inline void FloodingBasedTreeC$Boot$booted(void )
-#line 44
+#line 43
 {
   sim_log_debug(150U, "FloodingBasedTreeC", "Booted node: %d at %s \n", TOS_NODE_ID, sim_time_string());
   FloodingBasedTreeC$SplitControl$start();
@@ -8057,8 +6545,12 @@ static inline void SimMoteP$SimMote$setEuid(long long int e)
   SimMoteP$euid[sim_node()] = e;
 }
 
-
-
+#line 61
+static inline long long int SimMoteP$SimMote$getStartTime(void )
+#line 61
+{
+  return SimMoteP$startTime[sim_node()];
+}
 
 
 
@@ -9585,25 +8077,25 @@ static am_id_t TossimActiveMessageC$AMPacket$type(message_t *amsg)
   return __nesc_ntoh_uint8(header->type.nxdata);
 }
 
-# 23 "FloodingBasedTreeC.nc"
+# 22 "FloodingBasedTreeC.nc"
 static void FloodingBasedTreeC$sendMessage(void )
-#line 23
+#line 22
 {
   sim_log_debug(148U, "FloodingBasedTreeC", "Sending Message at time: %s \n", sim_time_string());
   if (!FloodingBasedTreeC$busy[sim_node()]) {
       FloodingBasedTreeMsg *fbtpkt = (FloodingBasedTreeMsg *)FloodingBasedTreeC$Packet$getPayload(&FloodingBasedTreeC$pkt[sim_node()], sizeof(FloodingBasedTreeMsg ));
 
-#line 27
+#line 26
       __nesc_hton_uint16(fbtpkt->nodeid.nxdata, TOS_NODE_ID);
       __nesc_hton_uint16(fbtpkt->m_type.nxdata, LEVEL_DISCOVERY);
       if (TOS_NODE_ID == 1) {
         __nesc_hton_uint16(fbtpkt->level_no.nxdata, 1);
         }
       else {
-#line 32
+#line 31
         __nesc_hton_uint16(fbtpkt->level_no.nxdata, FloodingBasedTreeC$my_level[sim_node()] + 1);
         }
-#line 33
+#line 32
       sim_log_debug(149U, "FloodingBasedTreeC", "Sending Level Discovery with level no %d from %d \n", __nesc_ntoh_uint16(fbtpkt->level_no.nxdata), __nesc_ntoh_uint16(fbtpkt->nodeid.nxdata));
       if (fbtpkt == (void *)0) {
           return;
@@ -9748,9 +8240,9 @@ static void SimSchedulerBasicP$sim_scheduler_submit_event(void )
     }
 }
 
-# 69 "FloodingBasedTreeC.nc"
+# 66 "FloodingBasedTreeC.nc"
 static void FloodingBasedTreeC$AMSend$sendDone(message_t *msg, error_t err)
-#line 69
+#line 66
 {
   if (err == FAIL || err == ECANCEL) {
       sim_log_debug(153U, "FloodingBasedTreeC", "Sending error at %s \n", sim_time_string());
@@ -9913,391 +8405,6 @@ static bool SimSchedulerBasicP$Scheduler$runNextTask(void )
   return TRUE;
 }
 
-# 161 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/Atm128AlarmAsyncP.nc"
-static uint32_t /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Counter$get(void )
-#line 161
-{
-  uint32_t now;
-
-  { __nesc_atomic_t __nesc_atomic = __nesc_atomic_start();
-    {
-
-
-      uint8_t now8 = /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Timer$get();
-
-      if (/*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$TimerCtrl$getInterruptFlag().bits.ocf0) {
-
-
-        now = /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$base[sim_node()] + /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Compare$get() + 1 + /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Timer$get();
-        }
-      else {
-
-        now = /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$base[sim_node()] + now8;
-        }
-    }
-#line 179
-    __nesc_atomic_end(__nesc_atomic); }
-#line 179
-  return now;
-}
-
-# 282 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/sim/HplAtm128Timer0AsyncP.nc"
-static uint8_t HplAtm128Timer0AsyncP$Timer0$get(void )
-#line 282
-{
-  uint8_t rval;
-  sim_time_t elapsed = sim_time() - HplAtm128Timer0AsyncP$last_zero();
-
-#line 285
-  elapsed = HplAtm128Timer0AsyncP$sim_to_clock(elapsed);
-  elapsed = elapsed >> HplAtm128Timer0AsyncP$shiftFromScale();
-  rval = (uint8_t )(elapsed & 0xff);
-  sim_log_debug(174U, "HplAtm128Timer0AsyncP", "HplAtm128Timer0AsyncP: Getting timer: %hhu\n", rval);
-  return rval;
-}
-
-#line 108
-static sim_time_t HplAtm128Timer0AsyncP$last_zero(void )
-#line 108
-{
-  if (HplAtm128Timer0AsyncP$lastZero[sim_node()] == 0) {
-      HplAtm128Timer0AsyncP$lastZero[sim_node()] = sim_mote_start_time(sim_node());
-    }
-  return HplAtm128Timer0AsyncP$lastZero[sim_node()];
-}
-
-# 106 "/home/ubuntu1204/tinyos-main/tos/lib/tossim/SimMoteP.nc"
-  long long int sim_mote_start_time(int mote)
-#line 106
-{
-  long long int result;
-  int tmp = sim_node();
-
-#line 109
-  sim_set_node(mote);
-  result = SimMoteP$SimMote$getStartTime();
-  sim_set_node(tmp);
-  return result;
-}
-
-# 160 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/sim/HplAtm128Timer0AsyncP.nc"
-static uint16_t HplAtm128Timer0AsyncP$shiftFromScale(void )
-#line 160
-{
-  uint8_t scale = HplAtm128Timer0AsyncP$Timer0$getScale();
-
-#line 162
-  switch (scale) {
-      case 0: 
-        return 0;
-      case 1: 
-        return 0;
-      case 2: 
-        return 3;
-      case 3: 
-        return 5;
-      case 4: 
-        return 6;
-      case 5: 
-        return 7;
-      case 6: 
-        return 8;
-      case 7: 
-        return 10;
-      default: 
-        return 255;
-    }
-}
-
-#line 321
-static uint8_t HplAtm128Timer0AsyncP$Timer0$getScale(void )
-#line 321
-{
-  return * (volatile uint8_t *)&atm128RegFile[sim_node()][0x33] & 0x7;
-}
-
-#line 383
-static Atm128_TIFR_t HplAtm128Timer0AsyncP$Timer0Ctrl$getInterruptFlag(void )
-#line 383
-{
-  Atm128_TIFR_t at;
-
-#line 385
-  at.flat = * (volatile uint8_t *)&atm128RegFile[sim_node()][0x36];
-  return at;
-}
-
-#line 457
-static uint8_t HplAtm128Timer0AsyncP$Compare$get(void )
-#line 457
-{
-  sim_log_debug(180U, "HplAtm128Timer0AsyncP", "HplAtm128Timer0AsyncP: Getting compare: %hhu\n", * (volatile uint8_t *)&atm128RegFile[sim_node()][0x31]);
-  return * (volatile uint8_t *)&atm128RegFile[sim_node()][0x31];
-}
-
-# 73 "/home/ubuntu1204/tinyos-main/tos/lib/timer/VirtualizeTimerC.nc"
-static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$fireTimers(uint32_t now)
-{
-  uint16_t num;
-
-  for (num = 0; num < /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$NUM_TIMERS; num++) 
-    {
-      /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer_t *timer = &/*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$m_timers[sim_node()][num];
-
-      if (timer->isrunning) 
-        {
-          uint32_t elapsed = now - timer->t0;
-
-          if (elapsed >= timer->dt) 
-            {
-              if (timer->isoneshot) {
-                timer->isrunning = FALSE;
-                }
-              else {
-#line 90
-                timer->t0 += timer->dt;
-                }
-              /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$fired(num);
-              break;
-            }
-        }
-    }
-  /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$updateFromTimer$postTask();
-}
-
-# 212 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/Atm128AlarmAsyncP.nc"
-static void /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Alarm$startAt(uint32_t nt0, uint32_t ndt)
-#line 212
-{
-  { __nesc_atomic_t __nesc_atomic = __nesc_atomic_start();
-    {
-      /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$set[sim_node()] = TRUE;
-      /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$t0[sim_node()] = nt0;
-      /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$dt[sim_node()] = ndt;
-    }
-#line 218
-    __nesc_atomic_end(__nesc_atomic); }
-  /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$setInterrupt();
-}
-
-#line 90
-static void /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$setInterrupt(void )
-#line 90
-{
-  bool fired = FALSE;
-
-  { __nesc_atomic_t __nesc_atomic = __nesc_atomic_start();
-    {
-
-
-
-      uint8_t interrupt_in = 1 + /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Compare$get() - /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Timer$get();
-      uint8_t newOcr0;
-      uint8_t tifr = (uint8_t )/*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$TimerCtrl$getInterruptFlag().flat;
-
-#line 101
-      sim_log_debug(160U, "Atm128AlarmAsyncP", "Atm128AlarmAsyncP: TIFR is %hhx\n", tifr);
-      if ((interrupt_in != 0 && interrupt_in < /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$MINDT) || tifr & (1 << OCF0)) {
-          if (interrupt_in < /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$MINDT) {
-              sim_log_debug(161U, "Atm128AlarmAsyncP", "Atm128AlarmAsyncP: under min: %hhu.\n", interrupt_in);
-            }
-          else {
-              sim_log_debug(162U, "Atm128AlarmAsyncP", "Atm128AlarmAsyncP: OCF set.\n");
-            }
-          {
-#line 109
-            __nesc_atomic_end(__nesc_atomic); 
-#line 109
-            return;
-          }
-        }
-
-      if (!/*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$set[sim_node()]) {
-          newOcr0 = /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$MAXT;
-          sim_log_debug(163U, "Atm128AlarmAsyncP", "Atm128AlarmAsyncP: no alarm set, set at max.\n");
-        }
-      else 
-        {
-          uint32_t now = /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Counter$get();
-
-#line 120
-          sim_log_debug(164U, "Atm128AlarmAsyncP", "Atm128AlarmAsyncP: now-t0 = %llu, dt = %llu\n", now - /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$t0[sim_node()], /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$dt[sim_node()]);
-
-          if ((uint32_t )(now - /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$t0[sim_node()]) >= /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$dt[sim_node()]) 
-            {
-              /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$set[sim_node()] = FALSE;
-              fired = TRUE;
-              newOcr0 = /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$MAXT;
-            }
-          else 
-            {
-
-
-              uint32_t alarm_in = /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$t0[sim_node()] + /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$dt[sim_node()] - /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$base[sim_node()];
-
-              if (alarm_in > /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$MAXT) {
-                newOcr0 = /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$MAXT;
-                }
-              else {
-#line 136
-                if ((uint8_t )alarm_in < /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$MINDT) {
-                  newOcr0 = /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$MINDT;
-                  }
-                else {
-#line 139
-                  newOcr0 = alarm_in;
-                  }
-                }
-            }
-        }
-#line 142
-      newOcr0--;
-      /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$setOcr0(newOcr0);
-    }
-#line 144
-    __nesc_atomic_end(__nesc_atomic); }
-  if (fired) {
-    /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$Alarm$fired();
-    }
-}
-
-# 463 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/sim/HplAtm128Timer0AsyncP.nc"
-static void HplAtm128Timer0AsyncP$Compare$set(uint8_t t)
-#line 463
-{
-  sim_log_debug(181U, "HplAtm128Timer0AsyncP", "HplAtm128Timer0AsyncP: Setting compare: %hhu\n", t);
-  /* atomic removed: atomic calls only */
-#line 465
-  {
-
-
-
-
-    if (t == 0 || t >= 0xfe) {
-      t = 1;
-      }
-    if (t != * (volatile uint8_t *)&atm128RegFile[sim_node()][0x31]) {
-        * (volatile uint8_t *)&atm128RegFile[sim_node()][0x31] = t;
-        HplAtm128Timer0AsyncP$schedule_new_compare();
-      }
-  }
-}
-
-#line 267
-static void HplAtm128Timer0AsyncP$schedule_new_compare(void )
-#line 267
-{
-  if (HplAtm128Timer0AsyncP$compare[sim_node()] != (void *)0) {
-      HplAtm128Timer0AsyncP$cancel_compare();
-    }
-  if (HplAtm128Timer0AsyncP$Timer0$getScale() != AVR_CLOCK_OFF) {
-      sim_event_t *newEvent = HplAtm128Timer0AsyncP$allocate_compare();
-
-#line 273
-      HplAtm128Timer0AsyncP$configure_compare(newEvent);
-
-      HplAtm128Timer0AsyncP$compare[sim_node()] = newEvent;
-      sim_queue_insert(newEvent);
-    }
-}
-
-# 97 "/home/ubuntu1204/tinyos-main/tos/lib/tossim/sim_event_queue.c"
-static sim_event_t *sim_queue_allocate_event()
-#line 97
-{
-  sim_event_t *evt = (sim_event_t *)malloc(sizeof(sim_event_t ));
-
-#line 99
-  memset(evt, 0, sizeof(sim_event_t ));
-  evt->mote = sim_node();
-  return evt;
-}
-
-# 100 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/timer/sim/HplAtm128Timer0AsyncP.nc"
-  void INTERRUPT_16(void )
-#line 100
-{
-  HplAtm128Timer0AsyncP$inOverflow[sim_node()] = TRUE;
-  HplAtm128Timer0AsyncP$Timer0$overflow();
-  HplAtm128Timer0AsyncP$inOverflow[sim_node()] = FALSE;
-}
-
-#line 508
-static void HplAtm128Timer0AsyncP$configure_overflow(sim_event_t *evt)
-#line 508
-{
-  sim_time_t overflowTime = 0;
-  uint8_t timerVal = HplAtm128Timer0AsyncP$Timer0$get();
-  uint8_t overflowVal = 0;
-
-
-
-
-  overflowTime = (overflowVal - timerVal) & 0xff;
-  if (overflowTime == 0) {
-      overflowTime = 256;
-    }
-
-
-
-
-  overflowTime = overflowTime << HplAtm128Timer0AsyncP$shiftFromScale();
-  overflowTime = HplAtm128Timer0AsyncP$clock_to_sim(overflowTime);
-  overflowTime += sim_time();
-  overflowTime -= (sim_time() - HplAtm128Timer0AsyncP$last_zero()) % (1 << HplAtm128Timer0AsyncP$shiftFromScale());
-
-  sim_log_debug(184U, "HplAtm128Timer0AsyncP", "Scheduling new overflow for %i at time %llu\n", sim_node(), overflowTime);
-
-  evt->time = overflowTime;
-}
-
-#line 94
-  void INTERRUPT_15(void )
-#line 94
-{
-
-  HplAtm128Timer0AsyncP$Compare$fired();
-}
-
-#line 231
-static void HplAtm128Timer0AsyncP$configure_compare(sim_event_t *evt)
-#line 231
-{
-  sim_time_t compareTime = 0;
-  sim_time_t phaseOffset = 0;
-  uint8_t timerVal = HplAtm128Timer0AsyncP$Timer0$get();
-  uint8_t compareVal = HplAtm128Timer0AsyncP$Compare$get();
-
-
-
-
-  compareTime = (compareVal - timerVal) & 0xff;
-  if (compareTime == 0) {
-      compareTime = 256;
-    }
-
-
-
-
-
-
-  compareTime = (compareTime + 1) << HplAtm128Timer0AsyncP$shiftFromScale();
-  compareTime = HplAtm128Timer0AsyncP$clock_to_sim(compareTime);
-  compareTime += sim_time();
-
-
-
-
-  phaseOffset = sim_time();
-  phaseOffset -= HplAtm128Timer0AsyncP$last_zero();
-  phaseOffset %= HplAtm128Timer0AsyncP$clock_to_sim(1 << HplAtm128Timer0AsyncP$shiftFromScale());
-  compareTime -= phaseOffset;
-
-  sim_log_debug(173U, "HplAtm128Timer0AsyncP", "Configuring new compare of %i for %i at time %llu  (@ %llu)\n", (int )compareVal, sim_node(), compareTime, sim_time());
-
-  evt->time = compareTime;
-}
-
 # 106 "/home/ubuntu1204/tinyos-main/tos/lib/tossim/TossimPacketModelC.nc"
 static error_t TossimPacketModelC$Control$start(void )
 #line 106
@@ -10336,14 +8443,18 @@ static error_t TossimPacketModelC$Control$start(void )
   sim_set_node(tmp);
 }
 
+  long long int sim_mote_start_time(int mote)
+#line 106
+{
+  long long int result;
+  int tmp = sim_node();
 
-
-
-
-
-
-
-
+#line 109
+  sim_set_node(mote);
+  result = SimMoteP$SimMote$getStartTime();
+  sim_set_node(tmp);
+  return result;
+}
 
   int sim_mote_get_variable_info(int mote, char *name, void **ptr, size_t *len)
 #line 115
@@ -10830,88 +8941,6 @@ static int __nesc_nido_resolve(int __nesc_mote,
     return 0;
   }
 
-  /* Module Atm128AlarmAsyncP$0 */
-  if (!strcmp(varname, "/*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$set"))
-  {
-    *addr = (uintptr_t)&/*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$set[__nesc_mote];
-    *size = sizeof(/*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$set[__nesc_mote]);
-    return 0;
-  }
-  if (!strcmp(varname, "/*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$t0"))
-  {
-    *addr = (uintptr_t)&/*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$t0[__nesc_mote];
-    *size = sizeof(/*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$t0[__nesc_mote]);
-    return 0;
-  }
-  if (!strcmp(varname, "/*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$dt"))
-  {
-    *addr = (uintptr_t)&/*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$dt[__nesc_mote];
-    *size = sizeof(/*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$dt[__nesc_mote]);
-    return 0;
-  }
-  if (!strcmp(varname, "/*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$base"))
-  {
-    *addr = (uintptr_t)&/*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$base[__nesc_mote];
-    *size = sizeof(/*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$base[__nesc_mote]);
-    return 0;
-  }
-
-  /* Module HplAtm128Timer0AsyncP */
-  if (!strcmp(varname, "HplAtm128Timer0AsyncP$inOverflow"))
-  {
-    *addr = (uintptr_t)&HplAtm128Timer0AsyncP$inOverflow[__nesc_mote];
-    *size = sizeof(HplAtm128Timer0AsyncP$inOverflow[__nesc_mote]);
-    return 0;
-  }
-  if (!strcmp(varname, "HplAtm128Timer0AsyncP$lastZero"))
-  {
-    *addr = (uintptr_t)&HplAtm128Timer0AsyncP$lastZero[__nesc_mote];
-    *size = sizeof(HplAtm128Timer0AsyncP$lastZero[__nesc_mote]);
-    return 0;
-  }
-  if (!strcmp(varname, "HplAtm128Timer0AsyncP$oldScale"))
-  {
-    *addr = (uintptr_t)&HplAtm128Timer0AsyncP$oldScale[__nesc_mote];
-    *size = sizeof(HplAtm128Timer0AsyncP$oldScale[__nesc_mote]);
-    return 0;
-  }
-  if (!strcmp(varname, "HplAtm128Timer0AsyncP$compare"))
-  {
-    *addr = (uintptr_t)&HplAtm128Timer0AsyncP$compare[__nesc_mote];
-    *size = sizeof(HplAtm128Timer0AsyncP$compare[__nesc_mote]);
-    return 0;
-  }
-  if (!strcmp(varname, "HplAtm128Timer0AsyncP$overflow"))
-  {
-    *addr = (uintptr_t)&HplAtm128Timer0AsyncP$overflow[__nesc_mote];
-    *size = sizeof(HplAtm128Timer0AsyncP$overflow[__nesc_mote]);
-    return 0;
-  }
-
-  /* Module AlarmToTimerC$0 */
-  if (!strcmp(varname, "/*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$m_dt"))
-  {
-    *addr = (uintptr_t)&/*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$m_dt[__nesc_mote];
-    *size = sizeof(/*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$m_dt[__nesc_mote]);
-    return 0;
-  }
-  if (!strcmp(varname, "/*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$m_oneshot"))
-  {
-    *addr = (uintptr_t)&/*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$m_oneshot[__nesc_mote];
-    *size = sizeof(/*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$m_oneshot[__nesc_mote]);
-    return 0;
-  }
-
-  /* Module VirtualizeTimerC$0 */
-  if (!strcmp(varname, "/*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$m_timers"))
-  {
-    *addr = (uintptr_t)&/*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$m_timers[__nesc_mote];
-    *size = sizeof(/*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$m_timers[__nesc_mote]);
-    return 0;
-  }
-
-  /* Module CounterToLocalTimeC$0 */
-
   /* Module RandomMlcgC */
   if (!strcmp(varname, "RandomMlcgC$seed"))
   {
@@ -11109,28 +9138,6 @@ static void __nesc_nido_initialise(int __nesc_mote)
   /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$current[__nesc_mote] = 1;
   memset((void *)&/*AMQueueP.AMQueueImplP*/AMQueueImplP$0$queue[__nesc_mote], 0, sizeof /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$queue[__nesc_mote]);
   memset((void *)&/*AMQueueP.AMQueueImplP*/AMQueueImplP$0$cancelMask[__nesc_mote], 0, sizeof /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$cancelMask[__nesc_mote]);
-
-  /* Module Atm128AlarmAsyncP$0 */
-  memset((void *)&/*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$set[__nesc_mote], 0, sizeof /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$set[__nesc_mote]);
-  memset((void *)&/*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$t0[__nesc_mote], 0, sizeof /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$t0[__nesc_mote]);
-  memset((void *)&/*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$dt[__nesc_mote], 0, sizeof /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$dt[__nesc_mote]);
-  memset((void *)&/*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$base[__nesc_mote], 0, sizeof /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAsyncP*/Atm128AlarmAsyncP$0$base[__nesc_mote]);
-
-  /* Module HplAtm128Timer0AsyncP */
-  HplAtm128Timer0AsyncP$inOverflow[__nesc_mote] = 0;
-  HplAtm128Timer0AsyncP$lastZero[__nesc_mote] = 0;
-  HplAtm128Timer0AsyncP$oldScale[__nesc_mote] = AVR_CLOCK_OFF;
-  memset((void *)&HplAtm128Timer0AsyncP$compare[__nesc_mote], 0, sizeof HplAtm128Timer0AsyncP$compare[__nesc_mote]);
-  memset((void *)&HplAtm128Timer0AsyncP$overflow[__nesc_mote], 0, sizeof HplAtm128Timer0AsyncP$overflow[__nesc_mote]);
-
-  /* Module AlarmToTimerC$0 */
-  memset((void *)&/*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$m_dt[__nesc_mote], 0, sizeof /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$m_dt[__nesc_mote]);
-  memset((void *)&/*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$m_oneshot[__nesc_mote], 0, sizeof /*HilTimerMilliC.AlarmToTimerC*/AlarmToTimerC$0$m_oneshot[__nesc_mote]);
-
-  /* Module VirtualizeTimerC$0 */
-  memset((void *)&/*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$m_timers[__nesc_mote], 0, sizeof /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$m_timers[__nesc_mote]);
-
-  /* Module CounterToLocalTimeC$0 */
 
   /* Module RandomMlcgC */
   memset((void *)&RandomMlcgC$seed[__nesc_mote], 0, sizeof RandomMlcgC$seed[__nesc_mote]);

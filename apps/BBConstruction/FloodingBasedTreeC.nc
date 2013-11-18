@@ -13,7 +13,6 @@ module FloodingBasedTreeC {
   uses interface Receive;
   uses interface Random;
   uses interface SplitControl;
-  uses interface Timer<TMilli> as MilliTimer;
 }
 implementation {
   uint16_t my_level = 100;
@@ -49,18 +48,16 @@ implementation {
   event void SplitControl.startDone(error_t err) {
     if (err == SUCCESS) {
        dbg("FloodingBasedTreeC", "Component started at %s \n", sim_time_string());
-       if (TOS_NODE_ID == 1) 
-         call MilliTimer.startOneShot(10240);
+       if (TOS_NODE_ID == 1)  {
+         my_level = 0;
+         sendMessage();
+       }
     }
     else {
       call SplitControl.start();
     }
   }
     
-  event void MilliTimer.fired() {
-      my_level = 0;
-      sendMessage();
-  }
 
   event void SplitControl.stopDone(error_t err) {
     dbg("FloodingBasedTreeC", "Component stopped at %s \n", sim_time_string());
