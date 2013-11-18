@@ -21,7 +21,7 @@ implementation {
   bool busy = FALSE;
 
   void sendMessage() {
-    dbg("FloodingBasedTreeC", "Sending Message at time: %s \n", sim_time_string());
+  // dbg("FloodingBasedTreeC", "Sending Message at time: %s \n", sim_time_string());
     if (!busy) {
       FloodingBasedTreeMsg* fbtpkt = (FloodingBasedTreeMsg*)(call Packet.getPayload(&pkt, sizeof(FloodingBasedTreeMsg)));
       fbtpkt->nodeid = TOS_NODE_ID;
@@ -30,7 +30,7 @@ implementation {
         fbtpkt->level_no = 1;
       else
         fbtpkt->level_no = my_level + 1;        
-      dbg("FloodingBasedTreeC", "Sending Level Discovery with level no %d from %d \n", fbtpkt->level_no, fbtpkt->nodeid);
+    //  dbg("FloodingBasedTreeC", "Sending Level Discovery with level no %d from %d \n", fbtpkt->level_no, fbtpkt->nodeid);
       if (fbtpkt == NULL) {
           return;
       }    
@@ -42,13 +42,13 @@ implementation {
 
 
   event void Boot.booted() {
-   dbg("FloodingBasedTreeC", "Booted node: %d at %s \n", TOS_NODE_ID, sim_time_string());
+  // dbg("FloodingBasedTreeC", "Booted node: %d at %s \n", TOS_NODE_ID, sim_time_string());
       call SplitControl.start();
   }
   
   event void SplitControl.startDone(error_t err) {
     if (err == SUCCESS) {
-       dbg("FloodingBasedTreeC", "Component started at %s \n", sim_time_string());
+    //   dbg("FloodingBasedTreeC", "Component started at %s \n", sim_time_string());
        if (TOS_NODE_ID == 1) 
          call MilliTimer.startOneShot(10240);
     }
@@ -59,6 +59,7 @@ implementation {
     
   event void MilliTimer.fired() {
       my_level = 0;
+      dbg("FloodingBasedTreeC", "I'm root and my level is %d at time %s \n", my_level, sim_time_string());  
       sendMessage();
   }
 
@@ -79,7 +80,7 @@ implementation {
       if (my_level != 100) {
         return;
       }
-      dbg("FloodingBasedTreeC", "Received level discovery message from %d and level no is  %d \n", nodeid, level_no);
+      dbg("FloodingBasedTreeC", "Received level discovery message from %d and my level no is  %d at time %s \n", nodeid, level_no, sim_time_string());
       my_level = level_no;
       sendMessage();
    }
