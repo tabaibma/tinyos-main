@@ -1,0 +1,2 @@
+COMPONENT=FloodingBasedTreeAppC
+include $(MAKERULES)

@@ -36,7 +36,7 @@ implementation {
       local2 = espkt->n2;
       local3 = espkt->n3;
       localSum = local1 + local2 + local3;
-      dbg("EqualizeSumC", "Sending %d, %d and %d \n", espkt->n1, espkt->n2, espkt->n3);
+      dbg("EqualizeSumC", "Sending %d, %d and %d from %d \n", espkt->n1, espkt->n2, espkt->n3, TOS_NODE_ID);
       if (espkt == NULL) {
           return;
       }    

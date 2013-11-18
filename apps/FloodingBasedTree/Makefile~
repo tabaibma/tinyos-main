@@ -1,0 +1,2 @@
+COMPONENT=EqualizeSumAppC
+include $(MAKERULES)
