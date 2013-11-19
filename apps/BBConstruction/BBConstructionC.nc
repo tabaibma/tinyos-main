@@ -62,8 +62,8 @@ implementation {
     if (err == SUCCESS) {
      //  dbg("BBConstructionC", "Component started at %s \n", sim_time_string());
        initializeNeighbors();
-       call MilliTimer1.startPeriodic(2000);
-       call MilliTimer2.startPeriodic(4500);
+       call MilliTimer1.startPeriodic(1000);
+       call MilliTimer2.startPeriodic(6500);
     }
     else {
       call SplitControl.start();

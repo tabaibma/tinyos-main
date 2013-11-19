@@ -1,4 +1,5 @@
 import random
+import itertools
 import sys
 
 def main():
@@ -19,11 +20,12 @@ def main():
     topo_con = open(topo_file, "w")
 
     for i in range(1,nodes+1):
-        for j in range(1,nodes+1):
+        for j in range(i,nodes+1):
             if (i == j):
                 continue
             if random.random() < density:
                 topo_con.write(str(i)+" "+str(j)+" "+str(random.randrange(-65, -55, 1))+"\n")
+                topo_con.write(str(j)+" "+str(i)+" "+str(random.randrange(-65, -55, 1))+"\n")
     topo_con.close()
 
 if __name__=="__main__":

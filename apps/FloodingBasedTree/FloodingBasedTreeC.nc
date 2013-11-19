@@ -59,7 +59,7 @@ implementation {
     
   event void MilliTimer.fired() {
       my_level = 0;
-      dbg("FloodingBasedTreeC", "I'm root and my level is %d at time %s \n", my_level, sim_time_string());  
+      dbg("FloodingBasedTreeC", "My level is %d \n", my_level);
       sendMessage();
   }
 
@@ -80,7 +80,7 @@ implementation {
       if (my_level != 100) {
         return;
       }
-      dbg("FloodingBasedTreeC", "Received level discovery message from %d and my level no is  %d at time %s \n", nodeid, level_no, sim_time_string());
+      dbg("FloodingBasedTreeC", "My level is  %d at time %s \n",level_no, sim_time_string());
       my_level = level_no;
       sendMessage();
    }
