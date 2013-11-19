@@ -14,8 +14,13 @@ typedef enum {
 } color_t;
 
 typedef enum BBConstructionMsgType {
-  LEVEL_DISCOVERY,
+  HELLO,
+  COLOR_GREY
 } BBConstructionMsgType;
+
+typedef nx_struct colorMsg {
+  nx_uint16_t nodeid;
+} colorMsg_t;
 
 typedef struct NeighborInfo {
   uint16_t nodeid;
@@ -23,15 +28,14 @@ typedef struct NeighborInfo {
 } NeighborInfo_t;
 
 typedef nx_struct NeighborMsg {
-  nx_uint16_t nodeid;
   nx_uint16_t color;
 } NeighborMsg_t;
   
 
 typedef nx_struct BBConstructionMsg {
   nx_uint16_t nodeid;
-  nx_uint16_t m_type;
-  nx_uint16_t level_no;
+  nx_uint16_t msgType;
+  nx_uint16_t color;
 }  BBConstructionMsg;
 
 #endif

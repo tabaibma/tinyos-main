@@ -1,2 +1,2 @@
-COMPONENT=FloodingBasedTreeAppC
+COMPONENT=BBConstructionAppC
 include $(MAKERULES)
