@@ -30,7 +30,7 @@ implementation {
         fbtpkt->level_no = 1;
       else
         fbtpkt->level_no = my_level + 1;        
-    //  dbg("FloodingBasedTreeC", "Sending Level Discovery with level no %d from %d \n", fbtpkt->level_no, fbtpkt->nodeid);
+     // dbg("FloodingBasedTreeC", "Sending Level Discovery with level no %d from %d \n", fbtpkt->level_no, fbtpkt->nodeid);
       if (fbtpkt == NULL) {
           return;
       }    
@@ -88,6 +88,7 @@ implementation {
   event message_t* Receive.receive(message_t* msg, void* payload, uint8_t len){
     if (len == sizeof(FloodingBasedTreeMsg)) {
       FloodingBasedTreeMsg* fbtpkt = (FloodingBasedTreeMsg*)payload;
+     // dbg("FloodingBasedTreeC", "Received FBTMsg at %s from %d \n", sim_time_string(), fbtpkt->nodeid);
       processFloodingBasedTree(fbtpkt->nodeid, fbtpkt->m_type, fbtpkt->level_no);      
     }
     return msg;

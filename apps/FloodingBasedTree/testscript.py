@@ -13,7 +13,7 @@ def main():
 
     # Getting the params from the command line arguments
     # default is 500 events
-    if (len(sys.argv)) != 4:
+    if (len(sys.argv)) == 1:
         topo_file = "topo.txt"
         event_count = 5000
         nodes = 5
@@ -22,8 +22,8 @@ def main():
             topo_file = str(sys.argv[1])
             event_count = int(sys.argv[2])
             nodes = int(sys.argv[3])
-        except ValueError, ex:
-            print ex
+        except (ValueError, IndexError) as ex:
+            print ex, ". Usage: python testscript.py <topology_file> <number_of_events> <num_of_nodes>"
             sys.exit()
 
     # adding graph
