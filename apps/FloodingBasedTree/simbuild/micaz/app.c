@@ -789,7 +789,7 @@ extern void *malloc(size_t __size) __attribute((__leaf__)) __attribute((__nothro
 #line 488
 extern void free(void *__ptr) __attribute((__leaf__)) __attribute((__nothrow__)) ;
 #line 742
-typedef int (*__compar_fn_t)(const void *arg_0x2aefc57ef1f0, const void *arg_0x2aefc57ef4c8);
+typedef int (*__compar_fn_t)(const void *arg_0x2b4129c231f0, const void *arg_0x2b4129c234c8);
 #line 776
 __extension__ 
 #line 793
@@ -807,7 +807,7 @@ extern double sqrt(double __x) __attribute((__leaf__)) __attribute((__nothrow__)
 #line 186
 extern double floor(double __x) __attribute((__leaf__)) __attribute((__nothrow__)) __attribute((const)) ;
 #line 252
-extern double erfc(double arg_0x2aefc58719c8) __attribute((__leaf__)) __attribute((__nothrow__)) ;
+extern double erfc(double arg_0x2b4129ca59c8) __attribute((__leaf__)) __attribute((__nothrow__)) ;
 # 203 "/usr/include/math.h" 3
 enum __nesc_unnamed4263 {
 
@@ -1182,8 +1182,8 @@ typedef struct hashtable hashtable_t;
 #line 78
 struct hashtable *
 create_hashtable(unsigned int minsize, 
-unsigned int (*hashfunction)(void *arg_0x2aefc5abf868), 
-int (*key_eq_fn)(void *arg_0x2aefc5abe020, void *arg_0x2aefc5abe2c0));
+unsigned int (*hashfunction)(void *arg_0x2b4129ef3868), 
+int (*key_eq_fn)(void *arg_0x2b4129ef2020, void *arg_0x2b4129ef22c0));
 #line 103
 #line 102
 int 
@@ -1796,7 +1796,7 @@ struct tm;
 
 struct tm;
 # 46 "/home/ubuntu1204/tinyos-main/tos/lib/tossim/randomlib.h"
-static inline void RandomInitialise(int arg_0x2aefc5cae288, int arg_0x2aefc5cae4f0);
+static inline void RandomInitialise(int arg_0x2b412a0e2288, int arg_0x2b412a0e24f0);
 static double RandomUniform(void );
 # 51 "/home/ubuntu1204/tinyos-main/tos/lib/tossim/sim_noise.c"
 int numCase1 = 0;
@@ -2180,19 +2180,10 @@ enum __nesc_unnamed4284 {
 
 
 
+
 #line 10
-typedef enum FloodingBasedTreeMsgType {
-  LEVEL_DISCOVERY
-} FloodingBasedTreeMsgType;
-
-
-
-
-
-#line 14
 typedef nx_struct FloodingBasedTreeMsg {
   nx_uint16_t nodeid;
-  nx_uint16_t m_type;
   nx_uint16_t level_no;
 } __attribute__((packed)) FloodingBasedTreeMsg;
 # 25 "/home/ubuntu1204/tinyos-main/tos/chips/atm128/sim/atm128_sim.h"
@@ -3628,11 +3619,11 @@ static error_t MeasureClockC$Init$init(void );
 # 67 "/home/ubuntu1204/tinyos-main/tos/interfaces/TaskBasic.nc"
 static error_t SimSchedulerBasicP$TaskBasic$postTask(
 # 49 "/home/ubuntu1204/tinyos-main/tos/lib/tossim/SimSchedulerBasicP.nc"
-uint8_t arg_0x2aefc5dcfab0);
+uint8_t arg_0x2b412a203ab0);
 # 75 "/home/ubuntu1204/tinyos-main/tos/interfaces/TaskBasic.nc"
 static void SimSchedulerBasicP$TaskBasic$default$runTask(
 # 49 "/home/ubuntu1204/tinyos-main/tos/lib/tossim/SimSchedulerBasicP.nc"
-uint8_t arg_0x2aefc5dcfab0);
+uint8_t arg_0x2b412a203ab0);
 # 57 "/home/ubuntu1204/tinyos-main/tos/interfaces/Scheduler.nc"
 static void SimSchedulerBasicP$Scheduler$init(void );
 
@@ -3662,7 +3653,7 @@ static long long int SimMoteP$SimMote$getStartTime(void );
 # 80 "/home/ubuntu1204/tinyos-main/tos/interfaces/AMSend.nc"
 static error_t TossimActiveMessageC$AMSend$send(
 # 47 "/home/ubuntu1204/tinyos-main/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0x2aefc60bc220, 
+am_id_t arg_0x2b412a4f2220, 
 # 80 "/home/ubuntu1204/tinyos-main/tos/interfaces/AMSend.nc"
 am_addr_t addr, 
 #line 71
@@ -3685,7 +3676,7 @@ message_t *
 
 TossimActiveMessageC$Snoop$default$receive(
 # 49 "/home/ubuntu1204/tinyos-main/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0x2aefc60ba020, 
+am_id_t arg_0x2b412a4ef020, 
 # 71 "/home/ubuntu1204/tinyos-main/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -3732,7 +3723,7 @@ message_t *
 
 TossimActiveMessageC$Receive$default$receive(
 # 48 "/home/ubuntu1204/tinyos-main/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0x2aefc60bb340, 
+am_id_t arg_0x2b412a4f0340, 
 # 71 "/home/ubuntu1204/tinyos-main/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -3888,7 +3879,7 @@ error_t error);
 # 110 "/home/ubuntu1204/tinyos-main/tos/interfaces/AMSend.nc"
 static void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$sendDone(
 # 48 "/home/ubuntu1204/tinyos-main/tos/system/AMQueueImplP.nc"
-am_id_t arg_0x2aefc62efc70, 
+am_id_t arg_0x2b412a724020, 
 # 103 "/home/ubuntu1204/tinyos-main/tos/interfaces/AMSend.nc"
 message_t * msg, 
 
@@ -3901,7 +3892,7 @@ error_t error);
 # 75 "/home/ubuntu1204/tinyos-main/tos/interfaces/Send.nc"
 static error_t /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$send(
 # 46 "/home/ubuntu1204/tinyos-main/tos/system/AMQueueImplP.nc"
-uint8_t arg_0x2aefc62f0990, 
+uint8_t arg_0x2b412a726e18, 
 # 67 "/home/ubuntu1204/tinyos-main/tos/interfaces/Send.nc"
 message_t * msg, 
 
@@ -3915,7 +3906,7 @@ uint8_t len);
 #line 100
 static void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$default$sendDone(
 # 46 "/home/ubuntu1204/tinyos-main/tos/system/AMQueueImplP.nc"
-uint8_t arg_0x2aefc62f0990, 
+uint8_t arg_0x2b412a726e18, 
 # 96 "/home/ubuntu1204/tinyos-main/tos/interfaces/Send.nc"
 message_t * msg, 
 
@@ -3992,11 +3983,11 @@ static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$TimerFrom$fire
 #line 83
 static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$default$fired(
 # 48 "/home/ubuntu1204/tinyos-main/tos/lib/timer/VirtualizeTimerC.nc"
-uint8_t arg_0x2aefc659ac28);
+uint8_t arg_0x2b412a9d0c28);
 # 73 "/home/ubuntu1204/tinyos-main/tos/lib/timer/Timer.nc"
 static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$startOneShot(
 # 48 "/home/ubuntu1204/tinyos-main/tos/lib/timer/VirtualizeTimerC.nc"
-uint8_t arg_0x2aefc659ac28, 
+uint8_t arg_0x2b412a9d0c28, 
 # 73 "/home/ubuntu1204/tinyos-main/tos/lib/timer/Timer.nc"
 uint32_t dt);
 # 82 "/home/ubuntu1204/tinyos-main/tos/lib/timer/Counter.nc"
@@ -4047,7 +4038,7 @@ int sim_main_start_mote(void )   ;
 # 75 "/home/ubuntu1204/tinyos-main/tos/interfaces/TaskBasic.nc"
 static void SimSchedulerBasicP$TaskBasic$runTask(
 # 49 "/home/ubuntu1204/tinyos-main/tos/lib/tossim/SimSchedulerBasicP.nc"
-uint8_t arg_0x2aefc5dcfab0);
+uint8_t arg_0x2b412a203ab0);
 
 
 
@@ -4215,7 +4206,7 @@ static am_addr_t TossimActiveMessageC$amAddress(void );
 # 110 "/home/ubuntu1204/tinyos-main/tos/interfaces/AMSend.nc"
 static void TossimActiveMessageC$AMSend$sendDone(
 # 47 "/home/ubuntu1204/tinyos-main/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0x2aefc60bc220, 
+am_id_t arg_0x2b412a4f2220, 
 # 103 "/home/ubuntu1204/tinyos-main/tos/interfaces/AMSend.nc"
 message_t * msg, 
 
@@ -4234,7 +4225,7 @@ message_t *
 
 TossimActiveMessageC$Snoop$receive(
 # 49 "/home/ubuntu1204/tinyos-main/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0x2aefc60ba020, 
+am_id_t arg_0x2b412a4ef020, 
 # 71 "/home/ubuntu1204/tinyos-main/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -4253,7 +4244,7 @@ message_t *
 
 TossimActiveMessageC$Receive$receive(
 # 48 "/home/ubuntu1204/tinyos-main/tos/lib/tossim/TossimActiveMessageC.nc"
-am_id_t arg_0x2aefc60bb340, 
+am_id_t arg_0x2b412a4f0340, 
 # 71 "/home/ubuntu1204/tinyos-main/tos/interfaces/Receive.nc"
 message_t * msg, 
 void * payload, 
@@ -4657,16 +4648,7 @@ static inline void FloodingBasedTreeC$Boot$booted(void );
 
 
 static inline void FloodingBasedTreeC$SplitControl$startDone(error_t err);
-
-
-
-
-
-
-
-
-
-
+#line 62
 static inline void FloodingBasedTreeC$MilliTimer$fired(void );
 
 
@@ -4686,7 +4668,7 @@ static void FloodingBasedTreeC$AMSend$sendDone(message_t *msg, error_t err);
 
 
 
-static inline void FloodingBasedTreeC$processFloodingBasedTree(uint16_t nodeid, FloodingBasedTreeMsgType m_type, uint16_t level_no);
+static inline void FloodingBasedTreeC$processFloodingBasedTree(FloodingBasedTreeMsg *fbtpkt);
 
 
 
@@ -4752,7 +4734,7 @@ static inline void /*FloodingBasedTreeAppC.AMSenderC.SenderC.AMQueueEntryP*/AMQu
 # 80 "/home/ubuntu1204/tinyos-main/tos/interfaces/AMSend.nc"
 static error_t /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$send(
 # 48 "/home/ubuntu1204/tinyos-main/tos/system/AMQueueImplP.nc"
-am_id_t arg_0x2aefc62efc70, 
+am_id_t arg_0x2b412a724020, 
 # 80 "/home/ubuntu1204/tinyos-main/tos/interfaces/AMSend.nc"
 am_addr_t addr, 
 #line 71
@@ -4769,7 +4751,7 @@ uint8_t len);
 # 100 "/home/ubuntu1204/tinyos-main/tos/interfaces/Send.nc"
 static void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$sendDone(
 # 46 "/home/ubuntu1204/tinyos-main/tos/system/AMQueueImplP.nc"
-uint8_t arg_0x2aefc62f0990, 
+uint8_t arg_0x2b412a726e18, 
 # 96 "/home/ubuntu1204/tinyos-main/tos/interfaces/Send.nc"
 message_t * msg, 
 
@@ -5169,7 +5151,7 @@ static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$TimerFrom$stop
 
 static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$fired(
 # 48 "/home/ubuntu1204/tinyos-main/tos/lib/timer/VirtualizeTimerC.nc"
-uint8_t arg_0x2aefc659ac28);
+uint8_t arg_0x2b412a9d0c28);
 #line 71
 enum /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$__nesc_unnamed4337 {
 #line 71
@@ -5603,25 +5585,25 @@ static __inline  uint16_t __nesc_ntoh_uint16(const void * source)
   return ((uint16_t )base[0] << 8) | base[1];
 }
 
-# 79 "FloodingBasedTreeC.nc"
-static inline void FloodingBasedTreeC$processFloodingBasedTree(uint16_t nodeid, FloodingBasedTreeMsgType m_type, uint16_t level_no)
-#line 79
+# 81 "FloodingBasedTreeC.nc"
+static inline void FloodingBasedTreeC$processFloodingBasedTree(FloodingBasedTreeMsg *fbtpkt)
+#line 81
 {
   if (FloodingBasedTreeC$my_level[sim_node()] != 100) {
       return;
     }
-  sim_log_debug(151U, "FloodingBasedTreeC", "My level is  %d at time %s \n", level_no, sim_time_string());
-  FloodingBasedTreeC$my_level[sim_node()] = level_no;
+  FloodingBasedTreeC$my_level[sim_node()] = __nesc_ntoh_uint16(fbtpkt->level_no.nxdata);
+  sim_log_debug(151U, "FloodingBasedTreeC", "My level is  %d at time %s \n", FloodingBasedTreeC$my_level[sim_node()], sim_time_string());
   FloodingBasedTreeC$sendMessage();
 }
 
 static inline message_t *FloodingBasedTreeC$Receive$receive(message_t *msg, void *payload, uint8_t len)
-#line 88
+#line 90
 {
   if (len == sizeof(FloodingBasedTreeMsg )) {
       FloodingBasedTreeMsg *fbtpkt = (FloodingBasedTreeMsg *)payload;
 
-      FloodingBasedTreeC$processFloodingBasedTree(__nesc_ntoh_uint16(fbtpkt->nodeid.nxdata), __nesc_ntoh_uint16(fbtpkt->m_type.nxdata), __nesc_ntoh_uint16(fbtpkt->level_no.nxdata));
+      FloodingBasedTreeC$processFloodingBasedTree(fbtpkt);
     }
   return msg;
 }
@@ -5634,13 +5616,13 @@ static inline message_t *TossimActiveMessageC$Receive$default$receive(am_id_t id
 }
 
 # 78 "/home/ubuntu1204/tinyos-main/tos/interfaces/Receive.nc"
-inline static message_t * TossimActiveMessageC$Receive$receive(am_id_t arg_0x2aefc60bb340, message_t * msg, void * payload, uint8_t len){
+inline static message_t * TossimActiveMessageC$Receive$receive(am_id_t arg_0x2b412a4f0340, message_t * msg, void * payload, uint8_t len){
 #line 78
   nx_struct message_t *__nesc_result;
 #line 78
 
 #line 78
-  switch (arg_0x2aefc60bb340) {
+  switch (arg_0x2b412a4f0340) {
 #line 78
     case 7:
 #line 78
@@ -5650,7 +5632,7 @@ inline static message_t * TossimActiveMessageC$Receive$receive(am_id_t arg_0x2ae
 #line 78
     default:
 #line 78
-      __nesc_result = TossimActiveMessageC$Receive$default$receive(arg_0x2aefc60bb340, msg, payload, len);
+      __nesc_result = TossimActiveMessageC$Receive$default$receive(arg_0x2b412a4f0340, msg, payload, len);
 #line 78
       break;
 #line 78
@@ -5690,13 +5672,13 @@ inline static void * FloodingBasedTreeC$Packet$getPayload(message_t * msg, uint8
 }
 #line 126
 # 80 "/home/ubuntu1204/tinyos-main/tos/interfaces/AMSend.nc"
-inline static error_t /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$send(am_id_t arg_0x2aefc62efc70, am_addr_t addr, message_t * msg, uint8_t len){
+inline static error_t /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$send(am_id_t arg_0x2b412a724020, am_addr_t addr, message_t * msg, uint8_t len){
 #line 80
   unsigned char __nesc_result;
 #line 80
 
 #line 80
-  __nesc_result = TossimActiveMessageC$AMSend$send(arg_0x2aefc62efc70, addr, msg, len);
+  __nesc_result = TossimActiveMessageC$AMSend$send(arg_0x2b412a724020, addr, msg, len);
 #line 80
 
 #line 80
@@ -5893,9 +5875,9 @@ inline static error_t FloodingBasedTreeC$AMSend$send(am_addr_t addr, message_t *
 }
 #line 80
 #line 110
-inline static void TossimActiveMessageC$AMSend$sendDone(am_id_t arg_0x2aefc60bc220, message_t * msg, error_t error){
+inline static void TossimActiveMessageC$AMSend$sendDone(am_id_t arg_0x2b412a4f2220, message_t * msg, error_t error){
 #line 110
-  /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$sendDone(arg_0x2aefc60bc220, msg, error);
+  /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$AMSend$sendDone(arg_0x2b412a4f2220, msg, error);
 #line 110
 }
 #line 110
@@ -6725,13 +6707,13 @@ static inline message_t *TossimActiveMessageC$Snoop$default$receive(am_id_t id, 
 }
 
 # 78 "/home/ubuntu1204/tinyos-main/tos/interfaces/Receive.nc"
-inline static message_t * TossimActiveMessageC$Snoop$receive(am_id_t arg_0x2aefc60ba020, message_t * msg, void * payload, uint8_t len){
+inline static message_t * TossimActiveMessageC$Snoop$receive(am_id_t arg_0x2b412a4ef020, message_t * msg, void * payload, uint8_t len){
 #line 78
   nx_struct message_t *__nesc_result;
 #line 78
 
 #line 78
-    __nesc_result = TossimActiveMessageC$Snoop$default$receive(arg_0x2aefc60ba020, msg, payload, len);
+    __nesc_result = TossimActiveMessageC$Snoop$default$receive(arg_0x2b412a4ef020, msg, payload, len);
 #line 78
 
 #line 78
@@ -6956,12 +6938,14 @@ static inline void FloodingBasedTreeC$SplitControl$startDone(error_t err)
 {
   if (err == SUCCESS) {
 
+
+
       if (TOS_NODE_ID == 1) {
         FloodingBasedTreeC$MilliTimer$startOneShot(10240);
         }
     }
   else 
-#line 55
+#line 57
     {
       FloodingBasedTreeC$SplitControl$start();
     }
@@ -6982,9 +6966,9 @@ static inline void TossimPacketModelC$startDoneTask$runTask(void )
   TossimPacketModelC$Control$startDone(SUCCESS);
 }
 
-# 66 "FloodingBasedTreeC.nc"
+# 68 "FloodingBasedTreeC.nc"
 static inline void FloodingBasedTreeC$SplitControl$stopDone(error_t err)
-#line 66
+#line 68
 {
   sim_log_debug(149U, "FloodingBasedTreeC", "Component stopped at %s \n", sim_time_string());
 }
@@ -7040,9 +7024,9 @@ static inline void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$default$sendDone
 }
 
 # 100 "/home/ubuntu1204/tinyos-main/tos/interfaces/Send.nc"
-inline static void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$sendDone(uint8_t arg_0x2aefc62f0990, message_t * msg, error_t error){
+inline static void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$sendDone(uint8_t arg_0x2b412a726e18, message_t * msg, error_t error){
 #line 100
-  switch (arg_0x2aefc62f0990) {
+  switch (arg_0x2b412a726e18) {
 #line 100
     case 0U:
 #line 100
@@ -7052,7 +7036,7 @@ inline static void /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$sendDone(uint8_t
 #line 100
     default:
 #line 100
-      /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$default$sendDone(arg_0x2aefc62f0990, msg, error);
+      /*AMQueueP.AMQueueImplP*/AMQueueImplP$0$Send$default$sendDone(arg_0x2b412a726e18, msg, error);
 #line 100
       break;
 #line 100
@@ -7283,9 +7267,9 @@ static inline void SimSchedulerBasicP$TaskBasic$default$runTask(uint8_t id)
 }
 
 # 75 "/home/ubuntu1204/tinyos-main/tos/interfaces/TaskBasic.nc"
-inline static void SimSchedulerBasicP$TaskBasic$runTask(uint8_t arg_0x2aefc5dcfab0){
+inline static void SimSchedulerBasicP$TaskBasic$runTask(uint8_t arg_0x2b412a203ab0){
 #line 75
-  switch (arg_0x2aefc5dcfab0) {
+  switch (arg_0x2b412a203ab0) {
 #line 75
     case TossimPacketModelC$startDoneTask:
 #line 75
@@ -7331,7 +7315,7 @@ inline static void SimSchedulerBasicP$TaskBasic$runTask(uint8_t arg_0x2aefc5dcfa
 #line 75
     default:
 #line 75
-      SimSchedulerBasicP$TaskBasic$default$runTask(arg_0x2aefc5dcfab0);
+      SimSchedulerBasicP$TaskBasic$default$runTask(arg_0x2b412a203ab0);
 #line 75
       break;
 #line 75
@@ -7377,12 +7361,12 @@ inline static Atm128_TIFR_t /*AlarmCounterMilliP.Atm128AlarmAsyncC.Atm128AlarmAs
 #line 53
 }
 #line 53
-# 60 "FloodingBasedTreeC.nc"
+# 62 "FloodingBasedTreeC.nc"
 static inline void FloodingBasedTreeC$MilliTimer$fired(void )
-#line 60
+#line 62
 {
   FloodingBasedTreeC$my_level[sim_node()] = 0;
-  sim_log_debug(148U, "FloodingBasedTreeC", "My level is %d \n", FloodingBasedTreeC$my_level[sim_node()]);
+  sim_log_debug(148U, "FloodingBasedTreeC", "My level is %d at time %s \n", FloodingBasedTreeC$my_level[sim_node()], sim_time_string());
   FloodingBasedTreeC$sendMessage();
 }
 
@@ -7392,9 +7376,9 @@ static inline void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$d
 }
 
 # 83 "/home/ubuntu1204/tinyos-main/tos/lib/timer/Timer.nc"
-inline static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$fired(uint8_t arg_0x2aefc659ac28){
+inline static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$fired(uint8_t arg_0x2b412a9d0c28){
 #line 83
-  switch (arg_0x2aefc659ac28) {
+  switch (arg_0x2b412a9d0c28) {
 #line 83
     case 0U:
 #line 83
@@ -7404,7 +7388,7 @@ inline static void /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$f
 #line 83
     default:
 #line 83
-      /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$default$fired(arg_0x2aefc659ac28);
+      /*HilTimerMilliC.VirtualizeTimerC*/VirtualizeTimerC$0$Timer$default$fired(arg_0x2b412a9d0c28);
 #line 83
       break;
 #line 83
@@ -9596,7 +9580,7 @@ static void FloodingBasedTreeC$sendMessage(void )
 
 #line 27
       __nesc_hton_uint16(fbtpkt->nodeid.nxdata, TOS_NODE_ID);
-      __nesc_hton_uint16(fbtpkt->m_type.nxdata, LEVEL_DISCOVERY);
+
       if (TOS_NODE_ID == 1) {
         __nesc_hton_uint16(fbtpkt->level_no.nxdata, 1);
         }
@@ -9747,9 +9731,9 @@ static void SimSchedulerBasicP$sim_scheduler_submit_event(void )
     }
 }
 
-# 70 "FloodingBasedTreeC.nc"
+# 72 "FloodingBasedTreeC.nc"
 static void FloodingBasedTreeC$AMSend$sendDone(message_t *msg, error_t err)
-#line 70
+#line 72
 {
   if (err == FAIL || err == ECANCEL) {
       sim_log_debug(150U, "FloodingBasedTreeC", "Sending error at %s \n", sim_time_string());

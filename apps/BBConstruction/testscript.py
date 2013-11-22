@@ -15,13 +15,11 @@ def main():
     # default is 500 events
     if (len(sys.argv)) != 4:
         topo_file = "topo.txt"
-        event_count = 5000
-        nodes = 5
+        event_count = 50000
     else:
         try:
             topo_file = str(sys.argv[1])
             event_count = int(sys.argv[2])
-            nodes = int(sys.argv[3])
         except ValueError, ex:
             print ex
             sys.exit()
@@ -33,12 +31,15 @@ def main():
     print "Adding Topology from "+str(topo_file)+" which is as follows:"
     print " ", "Src", "Dest", "Gain"
     lines = f.readlines()
+    allNodes = set()
     for line in lines:
         s = line.split()
         if (len(s) > 0):
             print " ", s[0], " ", s[1], " ", s[2];
+            allNodes.add(int(s[0])
             r.add(int(s[0]), int(s[1]), float(s[2]))
 
+    nodes = max(allNodes)
     # noise models
     # I've used the noise models as per http://www.tinyos.net/dist-2.0.0/tinyos-2.0.0/doc/html/tutorial/lesson11.html
     noise = open("meyer-heavy.txt", "r")

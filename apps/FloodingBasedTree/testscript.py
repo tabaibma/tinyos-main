@@ -1,43 +1,59 @@
 # Authors : Tharun and Mohammad
 # Testscript for GreenBlink Application 
 
+""" This file contains the simulation for Floodingbased Tree as given 
+    in Assignment 4, task 1.
+
+    Usage:
+    python testscript.py <topology_file_name> (or) python testscript.py
+    Note: when used as "python testscript.py", it takes the topology file topo.txt, which 
+          must be in your directory. 
+
+    Sample Usage:
+    python testscript.py topo16.txt """
+ 
+
+
 from TOSSIM import *
 import sys
- 
+
 def main():
     """ contains simulation for our app """
+    simulate(debug = False)
 
+def simulate(debug = False):
     # creating an object of Tossim and getting a node from the simulation
     t = Tossim([])
     r = t.radio()
 
     # Getting the params from the command line arguments
-    # default is 500 events
+    # default is 50000 events
+    event_count = 50000
     if (len(sys.argv)) == 1:
         topo_file = "topo.txt"
-        event_count = 5000
-        nodes = 5
     else:
         try:
             topo_file = str(sys.argv[1])
-            event_count = int(sys.argv[2])
-            nodes = int(sys.argv[3])
         except (ValueError, IndexError) as ex:
-            print ex, ". Usage: python testscript.py <topology_file> <number_of_events> <num_of_nodes>"
+            print ex, ". Usage: python testscript.py <topology_file>"
             sys.exit()
 
     # adding graph
-    # I've used the topology provided in http://www.tinyos.net/dist-2.0.0/tinyos-2.0.0/doc/html/tutorial/lesson11.html
-    # However, I'm using only two nodes in my simulation (specification says so)
     f = open(topo_file, "r")
-    print "Adding Topology from "+str(topo_file)+" which is as follows:"
-    print " ", "Src", "Dest", "Gain"
+    if debug:
+        print "Adding Topology from "+str(topo_file)+" which is as follows:"
+        print " ", "Src", "Dest", "Gain"
     lines = f.readlines()
+    all_nodes = set()
     for line in lines:
         s = line.split()
         if (len(s) > 0):
-            print " ", s[0], " ", s[1], " ", s[2];
+            if debug:
+                print " ", s[0], " ", s[1], " ", s[2];
+            all_nodes.add(int(s[0]))
+            all_nodes.add(int(s[1]))
             r.add(int(s[0]), int(s[1]), float(s[2]))
+    nodes = max(all_nodes)
 
     # noise models
     # I've used the noise models as per http://www.tinyos.net/dist-2.0.0/tinyos-2.0.0/doc/html/tutorial/lesson11.html
@@ -52,7 +68,8 @@ def main():
                 t.getNode(i).addNoiseTraceReading(val)
 
     for i in range(1, nodes + 1):
-        print "Creating noise model for ",i;
+        if debug:
+            print "Creating noise model for ",i;
         t.getNode(i).createNoiseModel()
 
 
@@ -60,8 +77,7 @@ def main():
     
     motes = [t.getNode(i) for i in range(1, nodes + 1)]
 
-    # Adding channels to the simulation, to send the Debugging statements to
-    # stdout
+    # Adding channels to the simulation, to send the Debugging statements to stdout
     t.addChannel("Boot", sys.stdout)
     t.addChannel("FloodingBasedTreeC", sys.stdout)
 
@@ -75,5 +91,6 @@ def main():
 
     print "End of Simulation"
 
+    
 if __name__ == "__main__":
     main()

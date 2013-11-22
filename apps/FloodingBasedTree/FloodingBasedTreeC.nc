@@ -16,7 +16,7 @@ module FloodingBasedTreeC {
   uses interface Timer<TMilli> as MilliTimer;
 }
 implementation {
-  uint16_t my_level = 100;
+  uint16_t my_level = 100; // Using 100 as an initial sentinel value, nothing significant
   message_t pkt;
   bool busy = FALSE;
 
@@ -25,9 +25,9 @@ implementation {
     if (!busy) {
       FloodingBasedTreeMsg* fbtpkt = (FloodingBasedTreeMsg*)(call Packet.getPayload(&pkt, sizeof(FloodingBasedTreeMsg)));
       fbtpkt->nodeid = TOS_NODE_ID;
-      fbtpkt->m_type = LEVEL_DISCOVERY;
+      
       if (TOS_NODE_ID == 1) 
-        fbtpkt->level_no = 1;
+        fbtpkt->level_no = 1; // fbtpkt->level_no contains the level number of the neighbors
       else
         fbtpkt->level_no = my_level + 1;        
      // dbg("FloodingBasedTreeC", "Sending Level Discovery with level no %d from %d \n", fbtpkt->level_no, fbtpkt->nodeid);
@@ -49,6 +49,8 @@ implementation {
   event void SplitControl.startDone(error_t err) {
     if (err == SUCCESS) {
     //   dbg("FloodingBasedTreeC", "Component started at %s \n", sim_time_string());
+    // If you are node 1, you are the root and you have to initiate the flooding. 
+    // I'm calling the millitimer at 10240ms as opposed to 10000ms in the specification as the simulation time has some offset
        if (TOS_NODE_ID == 1) 
          call MilliTimer.startOneShot(10240);
     }
@@ -58,9 +60,9 @@ implementation {
   }
     
   event void MilliTimer.fired() {
-      my_level = 0;
-      dbg("FloodingBasedTreeC", "My level is %d \n", my_level);
-      sendMessage();
+      my_level = 0; // Root initializes it level to 0
+      dbg("FloodingBasedTreeC", "My level is %d at time %s \n", my_level, sim_time_string());
+      sendMessage(); // And broadcasts the message to neighbors
   }
 
   event void SplitControl.stopDone(error_t err) {
@@ -76,12 +78,12 @@ implementation {
     }
   }
 
-  void processFloodingBasedTree(uint16_t nodeid, FloodingBasedTreeMsgType m_type, uint16_t level_no) {
+  void processFloodingBasedTree(FloodingBasedTreeMsg* fbtpkt) {
       if (my_level != 100) {
-        return;
+        return;      // if the level has already been set by previous message, the function returns doing nothing. This prevents infinite loops/flooding.
       }
-      dbg("FloodingBasedTreeC", "My level is  %d at time %s \n",level_no, sim_time_string());
-      my_level = level_no;
+      my_level = fbtpkt->level_no;
+      dbg("FloodingBasedTreeC", "My level is  %d at time %s \n",my_level, sim_time_string());
       sendMessage();
    }
 
@@ -89,7 +91,7 @@ implementation {
     if (len == sizeof(FloodingBasedTreeMsg)) {
       FloodingBasedTreeMsg* fbtpkt = (FloodingBasedTreeMsg*)payload;
      // dbg("FloodingBasedTreeC", "Received FBTMsg at %s from %d \n", sim_time_string(), fbtpkt->nodeid);
-      processFloodingBasedTree(fbtpkt->nodeid, fbtpkt->m_type, fbtpkt->level_no);      
+      processFloodingBasedTree(fbtpkt);      
     }
     return msg;
   }
