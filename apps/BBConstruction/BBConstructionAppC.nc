@@ -23,7 +23,7 @@ implementation {
   App.SplitControl -> ActiveMessageC;
   App.AMSend -> AMSenderC;
   App.Receive -> AMReceiverC;
-  App.MilliTimer1 -> Timer;
-  App.MilliTimer2 -> Timer2;
+  App.HelloTimer -> Timer;
+  App.ColorTimer -> Timer2;
   App.Random -> RandomC;
 }

@@ -55,6 +55,7 @@ def simulate(debug = False):
             r.add(int(s[0]), int(s[1]), float(s[2]))
     nodes = max(all_nodes)
 
+    print "Running simulation with "+str(event_count)+" events and "+str(nodes)+" nodes and on "+topo_file
     # noise models
     # I've used the noise models as per http://www.tinyos.net/dist-2.0.0/tinyos-2.0.0/doc/html/tutorial/lesson11.html
     noise = open("meyer-heavy.txt", "r")
@@ -71,9 +72,6 @@ def simulate(debug = False):
         if debug:
             print "Creating noise model for ",i;
         t.getNode(i).createNoiseModel()
-
-
-    print "Running simulation with "+str(event_count)+" events and "+str(nodes)+" nodes and on "+topo_file
     
     motes = [t.getNode(i) for i in range(1, nodes + 1)]
 

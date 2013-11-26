@@ -14,8 +14,8 @@ module BBConstructionC {
   uses interface AMSend;
   uses interface Receive;
   uses interface Random;
-  uses interface Timer<TMilli> as MilliTimer1;
-  uses interface Timer<TMilli> as MilliTimer2;
+  uses interface Timer<TMilli> as HelloTimer;
+  uses interface Timer<TMilli> as ColorTimer;
   uses interface SplitControl;
 }
 implementation {
@@ -26,7 +26,7 @@ implementation {
   bool busy = FALSE;
   NeighborInfo_t n;
 
-
+  
   void sendBBMessage(BBConstructionMsgType msgType) {
    // dbg("BBConstructionC", "Sending bb Message at time: %s \n", sim_time_string());
     if (!busy) {
@@ -62,8 +62,7 @@ implementation {
     if (err == SUCCESS) {
      //  dbg("BBConstructionC", "Component started at %s \n", sim_time_string());
        initializeNeighbors();
-       call MilliTimer1.startPeriodic(1000);
-       call MilliTimer2.startPeriodic(6500);
+       call HelloTimer.startPeriodic(200);
     }
     else {
       call SplitControl.start();
@@ -92,26 +91,25 @@ implementation {
  
  }
  
-  event void MilliTimer1.fired() {
+  event void HelloTimer.fired() {
    sendBBMessage(HELLO);
    //dbg("BBConstructionC", "Sending neighbor msg at %s \n", sim_time_string());
    //dbg("BBConstructionC", "I'm node %d and my color is %d at %s \n", TOS_NODE_ID,my_color, sim_time_string());
    if (TOS_NODE_ID == 1) {
     if (my_color == WHITE) {
       my_color = GREY;
+      call ColorTimer.startOneShot(50 + TOS_NODE_ID*400);
     }
    }
  } 
- event void MilliTimer2.fired() {
-      if ((my_color == GREY) && (hasWhiteNeighbors())) {
+ event void ColorTimer.fired() {
+      if (hasWhiteNeighbors()) {
 //      dbg("BBConstructionC", "my color is %d \n", my_color);
-      my_color = BLACK;
-      dbg("BBConstructionC", "I turned black \n");
-      sendBBMessage(COLOR_GREY);
+	 my_color = BLACK;
+         dbg("BBConstructionC", "I turned black \n");
+         sendBBMessage(COLOR_GREY);
     }
  }
-       
-
   
  event void SplitControl.stopDone(error_t err) {
     //dbg("BBConstructionC", "Component stopped at %s \n", sim_time_string());
@@ -132,8 +130,9 @@ implementation {
 
   void processColorMsg(uint16_t nodeid) {
    if (my_color == WHITE) {
-    // dbg("BBConstructionC", "Coloring grey, received from %d \n", nodeid);
+     dbg("BBConstructionC", "Coloring grey, received from %d \n", nodeid);
      my_color = GREY;
+     call ColorTimer.startOneShot(50 + TOS_NODE_ID*400);
    }
   }
 

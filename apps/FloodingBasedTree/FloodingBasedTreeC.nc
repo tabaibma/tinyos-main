@@ -61,7 +61,7 @@ implementation {
     
   event void MilliTimer.fired() {
       my_level = 0; // Root initializes it level to 0
-      dbg("FloodingBasedTreeC", "My level is %d at time %s \n", my_level, sim_time_string());
+      dbg("FloodingBasedTreeC", "My level is  %d at time %s \n", my_level, sim_time_string());
       sendMessage(); // And broadcasts the message to neighbors
   }
 
