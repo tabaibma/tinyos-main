@@ -1,0 +1,80 @@
+Script started on Thu 21 Nov 2013 04:28:31 PM EST
+]0;ubuntu1204@ubuntu: ~/tinyos-main/apps/FloodingBasedTreeubuntu1204@ubuntu:~/tinyos-main/apps/FloodingBasedTree$ python testscript.py 1[Kti[Kop o16.txt 
+Running simulation with 50000 events and 16 nodes and on topo16.txt
+DEBUG (1): My level is 0 
+DEBUG (16): My level is  1 at time 0:0:10.005996689 
+DEBUG (4): My level is  1 at time 0:0:10.005996689 
+DEBUG (3): My level is  1 at time 0:0:10.005996689 
+DEBUG (2): My level is  1 at time 0:0:10.005996689 
+DEBUG (15): My level is  1 at time 0:0:10.005996689 
+DEBUG (12): My level is  1 at time 0:0:10.005996689 
+DEBUG (8): My level is  1 at time 0:0:10.005996689 
+DEBUG (6): My level is  1 at time 0:0:10.005996689 
+DEBUG (5): My level is  1 at time 0:0:10.005996689 
+DEBUG (7): My level is  1 at time 0:0:10.005996689 
+DEBUG (11): My level is  1 at time 0:0:10.005996689 
+DEBUG (10): My level is  1 at time 0:0:10.005996689 
+DEBUG (9): My level is  1 at time 0:0:10.005996689 
+DEBUG (14): My level is  1 at time 0:0:10.005996689 
+DEBUG (13): My level is  1 at time 0:0:10.005996689 
+End of Simulation
+]0;ubuntu1204@ubuntu: ~/tinyos-main/apps/FloodingBasedTreeubuntu1204@ubuntu:~/tinyos-main/apps/FloodingBasedTree$ python testscript.py topoo16.txt 
+Running simulation with 50000 events and 16 nodes and on topo16.txt
+DEBUG (1): My level is 0 
+DEBUG (16): My level is  1 at time 0:0:10.008010837 
+DEBUG (4): My level is  1 at time 0:0:10.008010837 
+DEBUG (3): My level is  1 at time 0:0:10.008010837 
+DEBUG (2): My level is  1 at time 0:0:10.008010837 
+DEBUG (15): My level is  1 at time 0:0:10.008010837 
+DEBUG (12): My level is  1 at time 0:0:10.008010837 
+DEBUG (8): My level is  1 at time 0:0:10.008010837 
+DEBUG (6): My level is  1 at time 0:0:10.008010837 
+DEBUG (5): My level is  1 at time 0:0:10.008010837 
+DEBUG (7): My level is  1 at time 0:0:10.008010837 
+DEBUG (10): My level is  1 at time 0:0:10.008010837 
+DEBUG (9): My level is  1 at time 0:0:10.008010837 
+DEBUG (14): My level is  1 at time 0:0:10.008010837 
+DEBUG (13): My level is  1 at time 0:0:10.008010837 
+DEBUG (11): My level is  2 at time 0:0:10.010131796 
+End of Simulation
+]0;ubuntu1204@ubuntu: ~/tinyos-main/apps/FloodingBasedTreeubuntu1204@ubuntu:~/tinyos-main/apps/FloodingBasedTree$ python testscript.py topoo16.txt 
+Running simulation with 50000 events and 16 nodes and on topo16.txt
+DEBUG (1): My level is 0 
+DEBUG (4): My level is  1 at time 0:0:10.004898062 
+DEBUG (3): My level is  1 at time 0:0:10.004898062 
+DEBUG (2): My level is  1 at time 0:0:10.004898062 
+DEBUG (15): My level is  1 at time 0:0:10.004898062 
+DEBUG (12): My level is  1 at time 0:0:10.004898062 
+DEBUG (8): My level is  1 at time 0:0:10.004898062 
+DEBUG (6): My level is  1 at time 0:0:10.004898062 
+DEBUG (5): My level is  1 at time 0:0:10.004898062 
+DEBUG (7): My level is  1 at time 0:0:10.004898062 
+DEBUG (11): My level is  1 at time 0:0:10.004898062 
+DEBUG (10): My level is  1 at time 0:0:10.004898062 
+DEBUG (9): My level is  1 at time 0:0:10.004898062 
+DEBUG (14): My level is  1 at time 0:0:10.004898062 
+DEBUG (13): My level is  1 at time 0:0:10.004898062 
+DEBUG (16): My level is  2 at time 0:0:10.006469708 
+End of Simulation
+]0;ubuntu1204@ubuntu: ~/tinyos-main/apps/FloodingBasedTreeubuntu1204@ubuntu:~/tinyos-main/apps/FloodingBasedTree$ python testscript.py topoo16.txt 
+Running simulation with 50000 events and 16 nodes and on topo16.txt
+DEBUG (1): My level is 0 
+DEBUG (16): My level is  1 at time 0:0:10.003540038 
+DEBUG (4): My level is  1 at time 0:0:10.003540038 
+DEBUG (3): My level is  1 at time 0:0:10.003540038 
+DEBUG (2): My level is  1 at time 0:0:10.003540038 
+DEBUG (15): My level is  1 at time 0:0:10.003540038 
+DEBUG (12): My level is  1 at time 0:0:10.003540038 
+DEBUG (8): My level is  1 at time 0:0:10.003540038 
+DEBUG (6): My level is  1 at time 0:0:10.003540038 
+DEBUG (5): My level is  1 at time 0:0:10.003540038 
+DEBUG (7): My level is  1 at time 0:0:10.003540038 
+DEBUG (11): My level is  1 at time 0:0:10.003540038 
+DEBUG (10): My level is  1 at time 0:0:10.003540038 
+DEBUG (9): My level is  1 at time 0:0:10.003540038 
+DEBUG (14): My level is  1 at time 0:0:10.003540038 
+DEBUG (13): My level is  1 at time 0:0:10.003540038 
+End of Simulation
+]0;ubuntu1204@ubuntu: ~/tinyos-main/apps/FloodingBasedTreeubuntu1204@ubuntu:~/tinyos-main/apps/FloodingBasedTree$ exit
+
+Script done on Thu 21 Nov 2013 04:29:51 PM EST

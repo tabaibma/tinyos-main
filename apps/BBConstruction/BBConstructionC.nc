@@ -43,9 +43,6 @@ implementation {
     }
   }
 
-  void sendMessage() {
-  }
-  
   void initializeNeighbors() {
     uint16_t i;
     for (i = 0; i < MAX_NEIGHBORS; i++) {
@@ -69,15 +66,6 @@ implementation {
     }
   }
     
-  void printNeighbors() {
-    uint16_t i;
-    dbg("BBConstructionC", "Neighbors are");
-    for (i = 0; i < neighborsTotal; i++) {
-      dbg("BBConstructionC", "%d", neighborList[i]);
-    }
-    dbg("BBConstructionC", "\n");
-  }
- 
  bool hasWhiteNeighbors() {
   uint16_t i;
   for (i = 0; i < MAX_NEIGHBORS; i++) {
@@ -98,7 +86,7 @@ implementation {
    if (TOS_NODE_ID == 1) {
     if (my_color == WHITE) {
       my_color = GREY;
-      call ColorTimer.startOneShot(50 + TOS_NODE_ID*400);
+      call ColorTimer.startOneShot(50 + TOS_NODE_ID*2*200);
     }
    }
  } 
@@ -106,7 +94,7 @@ implementation {
       if (hasWhiteNeighbors()) {
 //      dbg("BBConstructionC", "my color is %d \n", my_color);
 	 my_color = BLACK;
-         dbg("BBConstructionC", "I turned black \n");
+         dbg("BBConstructionC", "I turned black @ %s \n", sim_time_string());
          sendBBMessage(COLOR_GREY);
     }
  }
@@ -130,9 +118,9 @@ implementation {
 
   void processColorMsg(uint16_t nodeid) {
    if (my_color == WHITE) {
-     dbg("BBConstructionC", "Coloring grey, received from %d \n", nodeid);
+     dbg("BBConstructionC", "Coloring grey, received from %d @ %s\n", nodeid, sim_time_string());
      my_color = GREY;
-     call ColorTimer.startOneShot(50 + TOS_NODE_ID*400);
+     call ColorTimer.startOneShot(50 + TOS_NODE_ID*2*200);
    }
   }
 
