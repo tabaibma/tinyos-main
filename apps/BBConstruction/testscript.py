@@ -32,7 +32,7 @@ def simulate(debug = False, noise_model = "meyer-heavy.txt"):
     # default is 50000 events
     event_count = 50000
     if (len(sys.argv)) == 1:
-        topo_file = "topo.txt"
+        topo_file = "./topologies/topo.txt"
     else:
         try:
             topo_file = str(sys.argv[1])
@@ -115,7 +115,7 @@ def simulate(debug = False, noise_model = "meyer-heavy.txt"):
     nx.draw(bb_tree)
     plt.title("Our BBTree")
     
-    figure_file = "bb"+(re.match(r"(.*)\.(.*)", topo_file)).group(1)+".png"
+    figure_file = "bb"+(re.match(r"(\..*/)?(.*)\.(.*)", topo_file)).group(2)+".png"
     figure_loc = "./figures/"+figure_file
     plt.savefig(figure_loc)
 #    plt.show()

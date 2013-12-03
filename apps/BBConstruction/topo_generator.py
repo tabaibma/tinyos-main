@@ -17,6 +17,7 @@ def main():
             print ex, ". Usage: python topo_generator.py <file_name> <number_of_nodes> <graph_density(0 - 1)>"
             sys.exit()
 
+    topo_file = "./topologies/"+topo_file
     topo_con = open(topo_file, "w")
 
     for i in range(1,nodes+1):
