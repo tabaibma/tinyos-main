@@ -1,4 +1,4 @@
-/**
+ /**
 * @authors : Tharun and Mohammad
 * Assignment 3 of ESE575
 */
@@ -18,6 +18,7 @@ module BBConstructionC {
   uses interface Timer<TMilli> as ColorTimer;
   uses interface SplitControl;
 }
+
 implementation {
   uint16_t my_color = WHITE;
   message_t pkt;
@@ -59,20 +60,21 @@ implementation {
     if (err == SUCCESS) {
      //  dbg("BBConstructionC", "Component started at %s \n", sim_time_string());
        initializeNeighbors();
-       call HelloTimer.startPeriodic(200);
+       //call HelloTimer.startPeriodic(200);
+       call HelloTimer.startPeriodic(200 + TOS_NODE_ID*5);
     }
     else {
       call SplitControl.start();
     }
   }
     
- bool hasWhiteNeighbors() {
+ uint16_t hasWhiteNeighbors() {
   uint16_t i;
   for (i = 0; i < MAX_NEIGHBORS; i++) {
     if (neighborList[i] == WHITE) 
-      return TRUE;
+       return i;
   }
-  return FALSE;
+  return 0;
  }
 
  void color_neighbors_grey() {
@@ -94,7 +96,7 @@ implementation {
       if (hasWhiteNeighbors()) {
 //      dbg("BBConstructionC", "my color is %d \n", my_color);
 	 my_color = BLACK;
-         dbg("BBConstructionC", "I turned black @ %s \n", sim_time_string());
+         dbg("BBConstructionC", "I turned black @ %s\n", sim_time_string());
          sendBBMessage(COLOR_GREY);
     }
  }
@@ -119,6 +121,7 @@ implementation {
   void processColorMsg(uint16_t nodeid) {
    if (my_color == WHITE) {
      dbg("BBConstructionC", "Coloring grey, received from %d @ %s\n", nodeid, sim_time_string());
+     dbg_clear("BBConstructionCStream", "%d %d\n", nodeid, TOS_NODE_ID);
      my_color = GREY;
      call ColorTimer.startOneShot(50 + TOS_NODE_ID*2*200);
    }

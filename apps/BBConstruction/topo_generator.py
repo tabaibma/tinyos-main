@@ -24,8 +24,8 @@ def main():
             if (i == j):
                 continue
             if random.random() < density:
-                topo_con.write(str(i)+" "+str(j)+" "+str(random.randrange(-65, -55, 1))+"\n")
-                topo_con.write(str(j)+" "+str(i)+" "+str(random.randrange(-65, -55, 1))+"\n")
+                topo_con.write(str(i)+" "+str(j)+" "+str(random.randrange(-50, -30, 1))+"\n")
+                topo_con.write(str(j)+" "+str(i)+" "+str(random.randrange(-50, -30, 1))+"\n")
     topo_con.close()
     print "Topology created in "+str(topo_file)
 
