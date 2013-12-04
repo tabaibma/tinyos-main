@@ -97,14 +97,25 @@ def simulate(debug = False, noise_model = "meyer-heavy.txt"):
 
     # Creating bbgraph using nx
     bb_tree = nx.Graph()
+    edge_list = []
+    black_nodes = []
     readTree = open("mst.txt", 'r')
     for line in readTree:
         s = line.split()
         if (len(s) > 0):
-            bb_tree.add_edge(int(s[0]), int(s[1]))
+            edge_list.append((int(s[0]), int(s[1])))
+            black_nodes.append(int(s[0]))
     readTree.close()
     os.remove("mst.txt") #deleting temp file mst.txt
 
+    black_nodes = set(black_nodes)
+    grey_nodes = all_nodes - black_nodes
+
+    bb_tree.add_nodes_from(all_nodes)
+    bb_tree.add_edges_from(edge_list)
+    pos = nx.circular_layout(bb_tree)
+
+    # plotting all the graph in one figure
     plt.subplot(131)
     nx.draw(main_graph)
     plt.title("Actual Graph")
@@ -112,9 +123,19 @@ def simulate(debug = False, noise_model = "meyer-heavy.txt"):
     nx.draw(mst)
     plt.title("MST")
     plt.subplot(133)
-    nx.draw(bb_tree)
+    # draw nodes
+    nx.draw_networkx_nodes(bb_tree,pos,
+                       nodelist=list(black_nodes),
+                       node_color='Black',
+                       alpha = 0.7)
+    nx.draw_networkx_nodes(bb_tree,pos,
+                       nodelist=list(grey_nodes), 
+                       node_color='Green')
+    #drawing edges and labels
+    nx.draw_networkx_edges(bb_tree,pos)
+    nx.draw_networkx_labels(bb_tree,pos)
+    # plot it
     plt.title("Our BBTree")
-    
     figure_file = "bb"+(re.match(r"(\..*/)?(.*)\.(.*)", topo_file)).group(2)+".png"
     figure_loc = "./figures/"+figure_file
     plt.savefig(figure_loc)
