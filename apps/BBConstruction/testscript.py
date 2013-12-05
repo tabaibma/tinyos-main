@@ -1,3 +1,4 @@
+ 
 # Authors : Tharun and Mohammad
 # Testscript for GreenBlink Application 
 
@@ -117,14 +118,16 @@ def simulate(debug = False, noise_model = "meyer-heavy.txt"):
     pos = nx.circular_layout(bb_tree)
 
     #dominating set from openopt
-    ds_tree = nx.Graph()
-    ds_tree.add_nodes_from(all_nodes)
-    ds_tree.add_edges_from(edge_list)
-    pos_ds = nx.circular_layout(ds_tree)
     p = DSP(main_graph)
     r = p.solve('interalg', iprint=0)
     dom_set = set(r.solution)
     non_dom = all_nodes - dom_set
+
+    ds_tree = nx.Graph()
+    ds_tree.add_nodes_from(all_nodes)
+    for node in dom_set:
+        ds_tree.add_edges_from(nx.edges(main_graph, nbunch = node))
+    pos_ds = nx.circular_layout(ds_tree)
     
     # plotting all the graph in one figure
     plt.subplot(131)
@@ -141,7 +144,7 @@ def simulate(debug = False, noise_model = "meyer-heavy.txt"):
     #drawing edges and labels
     nx.draw_networkx_edges(ds_tree, pos_ds)
     nx.draw_networkx_labels(ds_tree,pos_ds)
-    plt.title("Dominating Set")
+    plt.title("Optimal Dominating Set")
     plt.subplot(133)
     # draw nodes
     nx.draw_networkx_nodes(bb_tree,pos,
