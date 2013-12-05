@@ -18,6 +18,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import os
 import re
+from openopt import DSP
 
 def main():
     """ contains simulation for our app """
@@ -110,18 +111,37 @@ def simulate(debug = False, noise_model = "meyer-heavy.txt"):
 
     black_nodes = set(black_nodes)
     grey_nodes = all_nodes - black_nodes
-
+    
     bb_tree.add_nodes_from(all_nodes)
     bb_tree.add_edges_from(edge_list)
     pos = nx.circular_layout(bb_tree)
 
+    #dominating set from openopt
+    ds_tree = nx.Graph()
+    ds_tree.add_nodes_from(all_nodes)
+    ds_tree.add_edges_from(edge_list)
+    pos_ds = nx.circular_layout(ds_tree)
+    p = DSP(main_graph)
+    r = p.solve('interalg', iprint=0)
+    dom_set = set(r.solution)
+    non_dom = all_nodes - dom_set
+    
     # plotting all the graph in one figure
     plt.subplot(131)
     nx.draw(main_graph)
     plt.title("Actual Graph")
     plt.subplot(132)
-    nx.draw(mst)
-    plt.title("MST")
+    nx.draw_networkx_nodes(ds_tree, pos_ds, 
+                           nodelist = list(dom_set), 
+                           node_color = "Black",
+                           alpha = 0.7)
+    nx.draw_networkx_nodes(ds_tree, pos_ds,
+                           nodelist = list(non_dom),
+                           node_color = "Green")
+    #drawing edges and labels
+    nx.draw_networkx_edges(ds_tree, pos_ds)
+    nx.draw_networkx_labels(ds_tree,pos_ds)
+    plt.title("Dominating Set")
     plt.subplot(133)
     # draw nodes
     nx.draw_networkx_nodes(bb_tree,pos,
@@ -139,7 +159,7 @@ def simulate(debug = False, noise_model = "meyer-heavy.txt"):
     figure_file = "bb"+(re.match(r"(\..*/)?(.*)\.(.*)", topo_file)).group(2)+".png"
     figure_loc = "./figures/"+figure_file
     plt.savefig(figure_loc)
-#    plt.show()
+    plt.show()
     
     print "End of Simulation using "+noise_model
     return

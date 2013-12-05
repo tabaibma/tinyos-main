@@ -84,6 +84,7 @@ implementation {
       }
       my_level = fbtpkt->level_no;
       dbg("FloodingBasedTreeC", "My level is  %d at time %s \n",my_level, sim_time_string());
+      dbg_clear("FloodingBasedTreeCStream", "%d %d %d\n", fbtpkt->nodeid, TOS_NODE_ID, my_level);
       sendMessage();
    }
 
