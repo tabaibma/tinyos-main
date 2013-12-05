@@ -136,7 +136,7 @@ def simulate(debug = False, noise_model = "meyer-heavy.txt"):
     nx.draw_networkx_labels(bb_tree,pos, labels)
     # plot it
     plt.title("Our FloodingBasedTree")
-    figure_file_name = "bb"+(re.match(r"(\..*/)?(.*)\.(.*)", topo_file)).group(2)+".png"
+    figure_file_name = "fbt"+(re.match(r"(\..*/)?(.*)\.(.*)", topo_file)).group(2)+".png"
     figure_loc = "./figures/"+figure_file_name
     plt.savefig(figure_loc)
 #    plt.show()
