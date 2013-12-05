@@ -60,6 +60,7 @@ def simulate(debug = False, noise_model = "meyer-heavy.txt"):
             r.add(int(s[0]), int(s[1]), float(s[2]))
             main_graph.add_edge(int(s[0]), int(s[1]))
     nodes = max(all_nodes)
+    pos_main = nx.circular_layout(main_graph)
     mst = nx.minimum_spanning_tree(main_graph)
     
     print "Running simulation with "+str(event_count)+" events and "+str(nodes)+" nodes and on "+topo_file+" with noise model from "+noise_model
